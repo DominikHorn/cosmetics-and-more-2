@@ -1,3 +1,12 @@
-import * as React from "react";
+import React from "react";
+import { route } from "../routing";
 
-export const Galerie = () => <div>Dies ist die Galerie</div>;
+@route({
+  displayName: "Galerie",
+  path: "/gallery",
+})
+export class Galerie extends React.PureComponent {
+  render() {
+    return <div>Dies ist die Galerie</div>;
+  }
+}

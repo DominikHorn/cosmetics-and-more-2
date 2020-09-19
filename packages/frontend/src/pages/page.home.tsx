@@ -1,3 +1,12 @@
-import * as React from "react";
+import React from "react";
+import { route } from "../routing";
 
-export const Homepage = () => <div>Dies ist die Homepage</div>;
+@route({
+  displayName: "Startseite",
+  path: "/",
+})
+export class Homepage extends React.PureComponent {
+  render() {
+    return <div>Dies ist die Homepage</div>;
+  }
+}
