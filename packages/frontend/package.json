@@ -1,0 +1,23 @@
+{
+  "name": "@cosmetics-and-more/frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rimraf bundle/ dist/ tsconfig.tsbuildinfo",
+    "purge": "rimraf node_modules",
+    "build": "webpack --color --config webpack.prod.js",
+    "frontend:serve": "webpack-dev-server --color --hot --progress --config webpack.dev.js"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6"
+  },
+  "dependencies": {
+    "@cosmetics-and-more/components": "^1.0.0",
+    "@cosmetics-and-more/types": "^1.0.0",
+    "@material-ui/core": "^4.9.11",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.50",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
