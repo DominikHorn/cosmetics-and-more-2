@@ -35,17 +35,16 @@ export const MobilePage = (props: IPageProps) => {
       const rect = ref.current.getBoundingClientRect();
       return rect.top + rect.height > 0 && rect.top <= window.innerHeight;
     }) || routes[props.routeIndex];
+  useEffect(() => props.navigateTo(currentRoute), [currentRoute]);
 
-  // if ref to subpage from url changes, scroll into view
-  const currentRouteRef = subpageRefs[routes[props.routeIndex].path];
-  useEffect(
-    () =>
-      window.scrollTo({
-        top: currentRouteRef?.current?.getBoundingClientRect().top || 0,
-        behavior: "smooth",
-      }),
-    [currentRouteRef]
-  );
+  const scrollTo = (ref: RefObject<any>) =>
+    window.scrollTo({
+      top: ref?.current?.getBoundingClientRect().top || 0,
+      behavior: "smooth",
+    });
+
+  // scroll to routed page part (execute exactly once after initial page render)
+  useEffect(() => scrollTo(subpageRefs[routes[props.routeIndex].path]), []);
 
   return (
     <>
@@ -76,6 +75,7 @@ export const MobilePage = (props: IPageProps) => {
             key={i}
             onClick={() => {
               props.navigateTo(r);
+              scrollTo(subpageRefs[r.path]);
               closeMenu();
             }}
           >
