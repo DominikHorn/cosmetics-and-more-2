@@ -7,6 +7,7 @@ import { LoremIpsumComponent } from "@cosmetics-and-more/components";
   displayName: "Galerie",
   path: "/gallery",
   icon: <PhotoLibraryIcon />,
+  prio: 2,
 })
 export class Galerie extends React.PureComponent {
   render() {
