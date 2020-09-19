@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cosmetics and More</title>
+    <script type="text/javascript">
+      let basePath = "/cosmetics-and-more-2";
+      let pathKey = "path";
+
+      if (!window.sessionStorage[pathKey]) {
+        window.sessionStorage[pathKey] = window.location.pathname;
+        window.location.href = basePath;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

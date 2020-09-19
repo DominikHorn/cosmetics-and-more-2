@@ -9,6 +9,14 @@
     />
 
     <title>Cosmetics and More</title>
+
+    <script type="text/javascript">
+      let pathKey = "path";
+      if (window.sessionStorage[pathKey]) {
+        window.history.pushState(null, null, window.sessionStorage[pathKey]);
+        window.sessionStorage.removeItem(pathKey);
+      }
+    </script>
   </head>
 
   <body style="margin: 0">
