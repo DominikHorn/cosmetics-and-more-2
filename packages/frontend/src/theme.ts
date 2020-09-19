@@ -1,10 +1,10 @@
 import { ThemeOptions } from "@material-ui/core";
-import { blue, deepOrange, lightBlue } from "@material-ui/core/colors";
+import { deepOrange, lightBlue, lime, teal } from "@material-ui/core/colors";
 
 export const lightTheme: ThemeOptions = {
   palette: {
-    primary: blue,
-    secondary: blue,
+    primary: teal,
+    secondary: lime,
     background: {
       default: "#f5f5f5",
     },

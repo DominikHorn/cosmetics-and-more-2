@@ -3,6 +3,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import React from "react";
 import { hot } from "react-hot-loader";
 
+import { BrowserRouter as Router } from "react-router-dom";
 import { ErrorBoundaryComponent } from "@cosmetics-and-more/components";
 import { darkTheme, lightTheme } from "./theme";
 import { PageComponent } from "./pages";
@@ -15,12 +16,14 @@ const AppComponent = (): React.ReactElement => {
   );
 
   return (
-    <ThemeProvider theme={createMuiTheme(theme)}>
-      <CssBaseline />
-      <ErrorBoundaryComponent>
-        <PageComponent />
-      </ErrorBoundaryComponent>
-    </ThemeProvider>
+    <Router basename={process.env.PUBLIC_URL}>
+      <ThemeProvider theme={createMuiTheme(theme)}>
+        <CssBaseline />
+        <ErrorBoundaryComponent>
+          <PageComponent />
+        </ErrorBoundaryComponent>
+      </ThemeProvider>
+    </Router>
   );
 };
 
