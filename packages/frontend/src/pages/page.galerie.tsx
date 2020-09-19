@@ -1,6 +1,7 @@
 import React from "react";
 import { route } from "../routing";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
+import { LoremIpsumComponent } from "@cosmetics-and-more/components";
 
 @route({
   displayName: "Galerie",
@@ -9,6 +10,11 @@ import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 })
 export class Galerie extends React.PureComponent {
   render() {
-    return <div>Dies ist die Galerie</div>;
+    return (
+      <div>
+        Dies ist die Galerie
+        <LoremIpsumComponent />
+      </div>
+    );
   }
 }

@@ -9,87 +9,100 @@ import {
 import { routes, IRoute } from "../routing";
 import {
   useMediaQuery,
-  BottomNavigation,
-  BottomNavigationAction,
   makeStyles,
   AppBar,
   Tabs,
   Tab,
-  useTheme,
-  createMuiTheme,
-  ThemeProvider,
+  Fab,
+  Menu,
+  MenuItem,
+  Box,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  bottomNavigation: {
+  stickToBottom: {
     /* stick to bottom of screen */
-    width: "100%",
     position: "fixed",
-    bottom: 0,
-
-    /* theming */
-    backgroundColor: theme.palette.primary.main,
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
   },
-  bottomNavigationAction: {
-    color: theme.palette.primary.contrastText,
+  marginLeft: {
+    marginLeft: theme.spacing(1),
   },
   tabIndicator: {
     height: "2px",
   },
 }));
 
-interface INavBarProps {
-  readonly navValue: number;
-  readonly navigateTo: (route: IRoute) => () => void;
+interface INavigationProps {
+  readonly routeIndex: number;
+  readonly navigateTo: (route: IRoute) => void;
 }
 
-const DesktopNavBar = (props: INavBarProps) => {
+const DesktopNavigation = (props: INavigationProps) => {
   const classes = useStyles(props);
 
   return (
     <AppBar position="static" color={"primary"}>
       <Tabs
-        value={props.navValue}
+        value={props.routeIndex}
         indicatorColor={"secondary"}
         centered={true}
         TabIndicatorProps={{ className: classes.tabIndicator }}
       >
         {routes.map((r, i) => (
-          <Tab key={i} label={r.displayName} onClick={props.navigateTo(r)} />
+          <Tab
+            key={i}
+            label={r.displayName}
+            onClick={() => props.navigateTo(r)}
+          />
         ))}
       </Tabs>
     </AppBar>
   );
 };
 
-const MobileNavBar = (props: INavBarProps) => {
+const MobileNavigation = (props: INavigationProps) => {
   const classes = useStyles(props);
-  const theme = useTheme();
+
+  const [anchorEl, setAnchorEl] = React.useState<Element | undefined>();
+
+  const closeMenu = () => {
+    setAnchorEl(undefined);
+  };
 
   return (
-    <ThemeProvider
-      theme={createMuiTheme({
-        palette: {
-          primary: theme.palette.secondary,
-        },
-      })}
-    >
-      <BottomNavigation
-        showLabels
-        className={classes.bottomNavigation}
-        value={props.navValue}
+    <>
+      <Fab
+        className={classes.stickToBottom}
+        color="primary"
+        onClick={(e) => setAnchorEl(e.currentTarget)}
+        variant="extended"
+      >
+        {routes[props.routeIndex].icon}
+        <Box className={classes.marginLeft}>
+          {routes[props.routeIndex].displayName}
+        </Box>
+      </Fab>
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={closeMenu}
       >
         {routes.map((r, i) => (
-          <BottomNavigationAction
+          <MenuItem
             key={i}
-            className={classes.bottomNavigationAction}
-            label={r.displayName}
-            icon={r.icon}
-            onClick={props.navigateTo(r)}
-          />
+            onClick={() => {
+              props.navigateTo(r);
+              closeMenu();
+            }}
+          >
+            {r.displayName}
+          </MenuItem>
         ))}
-      </BottomNavigation>
-    </ThemeProvider>
+      </Menu>
+    </>
   );
 };
 
@@ -101,14 +114,14 @@ export const PageComponent = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const navBarProps: INavBarProps = {
-    navValue: routes.findIndex((r) => r.path.match(location.pathname)),
-    navigateTo: (route: IRoute) => () => history.push(route.path),
+  const navBarProps: INavigationProps = {
+    routeIndex: routes.findIndex((r) => r.path.match(location.pathname)),
+    navigateTo: (route: IRoute) => history.push(route.path),
   };
 
   return (
     <>
-      {isDesktop && <DesktopNavBar {...navBarProps} />}
+      {isDesktop && <DesktopNavigation {...navBarProps} />}
 
       <Switch>
         {routes.map((r, i) => (
@@ -119,7 +132,7 @@ export const PageComponent = () => {
         </Route>
       </Switch>
 
-      {isMobile && <MobileNavBar {...navBarProps} />}
+      {isMobile && <MobileNavigation {...navBarProps} />}
     </>
   );
 };
