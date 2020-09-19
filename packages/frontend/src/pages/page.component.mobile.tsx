@@ -37,11 +37,14 @@ export const MobilePage = (props: IPageProps) => {
     }) || routes[props.routeIndex];
   useEffect(() => props.navigateTo(currentRoute), [currentRoute]);
 
-  const scrollTo = (ref: RefObject<any>) =>
+  const scrollTo = (ref: RefObject<any>) => {
+    const rect = ref?.current?.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     window.scrollTo({
-      top: ref?.current?.getBoundingClientRect().top || 0,
+      top: rect.top + scrollTop || 0,
       behavior: "smooth",
     });
+  };
 
   // scroll to routed page part (execute exactly once after initial page render)
   useEffect(() => scrollTo(subpageRefs[routes[props.routeIndex].path]), []);
