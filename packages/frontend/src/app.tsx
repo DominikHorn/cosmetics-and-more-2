@@ -1,6 +1,6 @@
 import { createMuiTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import * as React from "react";
+import React from "react";
 import { hot } from "react-hot-loader";
 
 import { ErrorBoundaryComponent } from "@cosmetics-and-more/components";
