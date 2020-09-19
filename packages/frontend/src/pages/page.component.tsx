@@ -38,36 +38,77 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const PageComponent = (props: {}) => {
+interface INavBarProps {
+  readonly navValue: number;
+  readonly navigateTo: (route: IRoute) => () => void;
+}
+
+const DesktopNavBar = (props: INavBarProps) => {
+  const classes = useStyles(props);
+
+  return (
+    <AppBar position="static" color={"primary"}>
+      <Tabs
+        value={props.navValue}
+        indicatorColor={"secondary"}
+        centered={true}
+        TabIndicatorProps={{ className: classes.tabIndicator }}
+      >
+        {routes.map((r, i) => (
+          <Tab key={i} label={r.displayName} onClick={props.navigateTo(r)} />
+        ))}
+      </Tabs>
+    </AppBar>
+  );
+};
+
+const MobileNavBar = (props: INavBarProps) => {
+  const classes = useStyles(props);
+  const theme = useTheme();
+
+  return (
+    <ThemeProvider
+      theme={createMuiTheme({
+        palette: {
+          primary: theme.palette.secondary,
+        },
+      })}
+    >
+      <BottomNavigation
+        showLabels
+        className={classes.bottomNavigation}
+        value={props.navValue}
+      >
+        {routes.map((r, i) => (
+          <BottomNavigationAction
+            key={i}
+            className={classes.bottomNavigationAction}
+            label={r.displayName}
+            icon={r.icon}
+            onClick={props.navigateTo(r)}
+          />
+        ))}
+      </BottomNavigation>
+    </ThemeProvider>
+  );
+};
+
+export const PageComponent = () => {
   // TODO: generalize mobile detection logic
   const isDesktop = useMediaQuery("only screen and (min-width: 768px)");
   const isMobile = !isDesktop;
 
   const history = useHistory();
-  const navigateTo = (route: IRoute) => () => history.push(route.path);
-
   const location = useLocation();
-  const navValue = routes.findIndex((r) => r.path.match(location.pathname));
 
-  const classes = useStyles(props);
-  const theme = useTheme();
+  const navBarProps: INavBarProps = {
+    navValue: routes.findIndex((r) => r.path.match(location.pathname)),
+    navigateTo: (route: IRoute) => () => history.push(route.path),
+  };
 
   return (
     <>
-      {isDesktop && (
-        <AppBar position="static" color={"primary"}>
-          <Tabs
-            value={navValue}
-            indicatorColor={"secondary"}
-            centered
-            TabIndicatorProps={{ className: classes.tabIndicator }}
-          >
-            {routes.map((r, i) => (
-              <Tab key={i} label={r.displayName} onClick={navigateTo(r)} />
-            ))}
-          </Tabs>
-        </AppBar>
-      )}
+      {isDesktop && <DesktopNavBar {...navBarProps} />}
 
       <Switch>
         {routes.map((r, i) => (
@@ -78,31 +119,7 @@ export const PageComponent = (props: {}) => {
         </Route>
       </Switch>
 
-      {isMobile && (
-        <ThemeProvider
-          theme={createMuiTheme({
-            palette: {
-              primary: theme.palette.secondary,
-            },
-          })}
-        >
-          <BottomNavigation
-            showLabels
-            className={classes.bottomNavigation}
-            value={navValue}
-          >
-            {routes.map((r, i) => (
-              <BottomNavigationAction
-                key={i}
-                className={classes.bottomNavigationAction}
-                label={r.displayName}
-                icon={r.icon}
-                onClick={navigateTo(r)}
-              />
-            ))}
-          </BottomNavigation>
-        </ThemeProvider>
-      )}
+      {isMobile && <MobileNavBar {...navBarProps} />}
     </>
   );
 };
