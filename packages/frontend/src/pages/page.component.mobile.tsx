@@ -25,7 +25,7 @@ export const MobilePage = (props: IPageProps) => {
 
   // make sure component is redrawn when view scrolls
   // (otherwise floating button does not work)
-  useScrollPosition(2);
+  useScrollPosition(10);
 
   // find currently visible page (if multiple are visible, use topmost page)
   const currentRoute =
