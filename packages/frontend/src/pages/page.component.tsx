@@ -23,6 +23,9 @@ const useStyles = makeStyles({
     position: "fixed",
     bottom: 0,
   },
+  tabIndicator: {
+    height: "2px",
+  },
 });
 
 export const PageComponent = () => {
@@ -36,10 +39,12 @@ export const PageComponent = () => {
   return (
     <>
       {isDesktop && (
-        <AppBar position="static">
+        <AppBar position="static" color={"primary"}>
           <Tabs
             value={routes.findIndex((r) => r.path.match(location.pathname))}
             indicatorColor={"secondary"}
+            centered
+            TabIndicatorProps={{ className: classes.tabIndicator }}
           >
             {routes.map((r, i) => (
               <Tab
