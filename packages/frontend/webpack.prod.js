@@ -49,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      PUBLIC_URL: "/cosmetics-and-more-2",
+      PUBLIC_URL: "/",
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src/index.html"),
