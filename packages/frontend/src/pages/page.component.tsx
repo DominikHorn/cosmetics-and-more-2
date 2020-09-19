@@ -8,7 +8,12 @@ import { MobilePage } from "./page.component.mobile";
 
 export const PageComponent = () => {
   // TODO: generalize mobile detection logic
-  const isDesktop = useMediaQuery("only screen and (min-width: 768px)");
+  const isDesktop = useMediaQuery("only screen and (min-width: 768px)", {
+    // disabling server side rendering prevents double page render on load
+    // which in turn prevents false negatives for 'isDesktop' on initial page
+    // load
+    noSsr: true,
+  });
 
   const history = useHistory();
   const location = useLocation();
