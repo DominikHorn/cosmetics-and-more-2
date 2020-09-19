@@ -1,11 +1,20 @@
 import React from "react";
-import { Switch, Link, Route, Redirect, useHistory } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  Redirect,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import { routes } from "../routing";
 import {
   useMediaQuery,
   BottomNavigation,
   BottomNavigationAction,
   makeStyles,
+  AppBar,
+  Tabs,
+  Tab,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -21,20 +30,26 @@ export const PageComponent = () => {
   const isDesktop = useMediaQuery("only screen and (min-width: 768px)");
   const isMobile = !isDesktop;
   const history = useHistory();
+  const location = useLocation();
   const classes = useStyles();
 
   return (
     <>
       {isDesktop && (
-        <div>
-          <nav>
+        <AppBar position="static">
+          <Tabs
+            value={routes.findIndex((r) => r.path.match(location.pathname))}
+            indicatorColor={"secondary"}
+          >
             {routes.map((r, i) => (
-              <li key={i}>
-                <Link to={r.path}>{r.displayName}</Link>
-              </li>
+              <Tab
+                key={i}
+                label={r.displayName}
+                onClick={() => history.push(r.path)}
+              />
             ))}
-          </nav>
-        </div>
+          </Tabs>
+        </AppBar>
       )}
       <Switch>
         {routes.map((r, i) => (
