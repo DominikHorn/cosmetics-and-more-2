@@ -7,6 +7,7 @@ import { LoremIpsumComponent } from "@cosmetics-and-more/components";
   displayName: "Startseite",
   path: "/",
   icon: <HomeIcon />,
+  prio: 1,
 })
 export class Homepage extends React.PureComponent {
   render() {
