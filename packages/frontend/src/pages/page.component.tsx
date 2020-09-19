@@ -43,7 +43,7 @@ const DesktopNavigation = (props: INavigationProps) => {
   const classes = useStyles(props);
 
   return (
-    <AppBar position="static" color={"primary"}>
+    <AppBar position="sticky" color={"primary"}>
       <Tabs
         value={props.routeIndex}
         indicatorColor={"secondary"}
