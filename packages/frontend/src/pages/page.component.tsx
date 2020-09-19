@@ -16,19 +16,23 @@ import {
   Fab,
   Menu,
   MenuItem,
+  Box,
 } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   stickToBottom: {
     /* stick to bottom of screen */
     position: "fixed",
-    bottom: "10px",
-    right: "10px",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+  },
+  marginLeft: {
+    marginLeft: theme.spacing(1),
   },
   tabIndicator: {
     height: "2px",
   },
-});
+}));
 
 interface INavigationProps {
   readonly routeIndex: number;
@@ -70,11 +74,15 @@ const MobileNavigation = (props: INavigationProps) => {
   return (
     <>
       <Fab
-        color="primary"
         className={classes.stickToBottom}
+        color="primary"
         onClick={(e) => setAnchorEl(e.currentTarget)}
+        variant="extended"
       >
         {routes[props.routeIndex].icon}
+        <Box className={classes.marginLeft}>
+          {routes[props.routeIndex].displayName}
+        </Box>
       </Fab>
       <Menu
         anchorEl={anchorEl}
