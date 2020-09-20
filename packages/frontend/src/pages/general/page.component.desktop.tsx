@@ -1,12 +1,13 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { routes } from "../../routing";
-import { AppBar, Tabs, Tab } from "@material-ui/core";
+import { AppBar, Tabs, Tab, useTheme } from "@material-ui/core";
 import { INavigationProps } from "./types";
 import { usePageStyles } from "./styles";
 
 export const DesktopPage = (props: INavigationProps) => {
   const classes = usePageStyles(props);
+  const theme = useTheme();
 
   return (
     <>
@@ -27,14 +28,16 @@ export const DesktopPage = (props: INavigationProps) => {
         </Tabs>
       </AppBar>
 
-      <Switch>
-        {routes.map((r, i) => (
-          <Route key={i} {...r} />
-        ))}
-        <Route>
-          <Redirect to={"/"} />
-        </Route>
-      </Switch>
+      <div style={{ margin: theme.spacing(1) }}>
+        <Switch>
+          {routes.map((r, i) => (
+            <Route key={i} {...r} />
+          ))}
+          <Route>
+            <Redirect to={"/"} />
+          </Route>
+        </Switch>
+      </div>
     </>
   );
 };
