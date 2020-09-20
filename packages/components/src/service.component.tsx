@@ -41,13 +41,21 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
-  title: {
+  titleItem: {
     textAlign: "center",
-    minHeight: "60px",
-    marginBottom: theme.spacing(2),
   },
   textRight: {
     textAlign: "end",
+  },
+  spaceTop: {
+    marginTop: "auto",
+  },
+  spaceBottom: {
+    marginBottom: "auto",
+  },
+  spaceTopBottom: {
+    marginTop: "auto",
+    marginBottom: "auto",
   },
 }));
 
@@ -99,42 +107,57 @@ export const ServiceComponent = (props: IServiceComponentProps) => {
     >
       <Paper elevation={3} className={classes.root}>
         <Grid container spacing={1} className={classes.rootGrid}>
-          <Grid item xs={12}>
-            <Typography variant="h5" component="h2" className={classes.title}>
+          <Grid item xs={12} className={classes.titleItem}>
+            <Typography variant="h5" component="h2">
               {props.title}
             </Typography>
+          </Grid>
 
-            {props.description && (
+          {props.description && (
+            <Grid item xs={12} className={classes.spaceTop}>
               <Typography variant={"body2"}>{props.description}</Typography>
-            )}
-          </Grid>
+            </Grid>
+          )}
 
-          {props.variants &&
-            props.variants.map((v, i) => <ServiceVariant key={i} {...v} />)}
+          {props.variants && (
+            <Grid
+              container
+              item
+              xs={12}
+              spacing={0}
+              className={classes.spaceTop}
+            >
+              {props.variants.map((v, i) => (
+                <ServiceVariant key={i} {...v} />
+              ))}
+            </Grid>
+          )}
 
-          <Grid
-            container
-            item
-            xs={12}
-            spacing={0}
-            style={{ marginTop: "auto" }}
-          >
-            {props.duration && (
-              <Grid item xs={6}>
-                <Typography variant="subtitle2" color="textSecondary">
-                  ca. {props.duration} min
-                </Typography>
-              </Grid>
-            )}
+          {(props.duration || props.price) && (
+            <Grid
+              container
+              item
+              xs={12}
+              spacing={0}
+              className={classes.spaceTop}
+            >
+              {props.duration && (
+                <Grid item xs={6}>
+                  <Typography variant="subtitle2" color="textSecondary">
+                    ca. {props.duration} min
+                  </Typography>
+                </Grid>
+              )}
 
-            {props.price && (
-              <Grid item xs={6}>
-                <Typography variant="subtitle2" className={classes.textRight}>
-                  {props.price},- €
-                </Typography>
-              </Grid>
-            )}
-          </Grid>
+              {props.price && (
+                <Grid item xs={6}>
+                  <Typography variant="subtitle2" className={classes.textRight}>
+                    {props.price},- €
+                  </Typography>
+                </Grid>
+              )}
+            </Grid>
+          )}
         </Grid>
       </Paper>
     </Zoom>
