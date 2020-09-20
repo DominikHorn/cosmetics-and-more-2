@@ -1,4 +1,4 @@
-import { IRoute } from "../routing";
+import { IRoute } from "../../routing";
 
 export interface INavigationProps {
   readonly routeIndex: number;
