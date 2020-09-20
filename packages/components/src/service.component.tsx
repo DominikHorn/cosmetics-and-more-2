@@ -19,7 +19,7 @@ export interface IServiceVariant {
   readonly info?: string; // additional information (if applicable)
 }
 
-export interface IServiceComponentProps {
+export interface IService {
   readonly duration?: number; // duration of service in minutes
   readonly title: string; // title of serice
   readonly description?: string; // textual description of the service
@@ -96,7 +96,7 @@ const ServiceVariant = (props: IServiceVariant) => {
   );
 };
 
-export const ServiceComponent = (props: IServiceComponentProps) => {
+export const ServiceComponent = (props: IService) => {
   const classes = useStyles(props);
 
   return (
