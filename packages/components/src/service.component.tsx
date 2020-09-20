@@ -3,6 +3,7 @@ import {
   Paper,
   Tooltip,
   Typography,
+  Zoom,
   makeStyles,
   useTheme,
 } from "@material-ui/core";
@@ -83,40 +84,49 @@ const ServiceVariant = (props: IServiceVariant) => {
 
 export const ServiceComponent = (props: IServiceComponentProps) => {
   const classes = useStyles(props);
+
   return (
-    <Paper elevation={3} className={classes.root}>
-      <Grid container spacing={1} className={classes.rootGrid}>
-        <Grid item xs={12}>
-          <Typography variant="h5" component="h2" className={classes.title}>
-            {props.title}
-          </Typography>
+    <Zoom in={true} timeout={500}>
+      <Paper elevation={3} className={classes.root}>
+        <Grid container spacing={1} className={classes.rootGrid}>
+          <Grid item xs={12}>
+            <Typography variant="h5" component="h2" className={classes.title}>
+              {props.title}
+            </Typography>
 
-          {props.description && (
-            <Typography variant={"body2"}>{props.description}</Typography>
-          )}
+            {props.description && (
+              <Typography variant={"body2"}>{props.description}</Typography>
+            )}
+          </Grid>
+
+          {props.variants &&
+            props.variants.map((v, i) => <ServiceVariant key={i} {...v} />)}
+
+          <Grid
+            container
+            item
+            xs={12}
+            spacing={0}
+            style={{ marginTop: "auto" }}
+          >
+            {props.duration && (
+              <Grid item xs={6}>
+                <Typography variant="subtitle2" color="textSecondary">
+                  ca. {props.duration} min
+                </Typography>
+              </Grid>
+            )}
+
+            {props.price && (
+              <Grid item xs={6}>
+                <Typography variant="subtitle2" className={classes.textRight}>
+                  {props.price},- €
+                </Typography>
+              </Grid>
+            )}
+          </Grid>
         </Grid>
-
-        {props.variants &&
-          props.variants.map((v, i) => <ServiceVariant key={i} {...v} />)}
-
-        <Grid container item xs={12} spacing={0} style={{ marginTop: "auto" }}>
-          {props.duration && (
-            <Grid item xs={6}>
-              <Typography variant="subtitle2" color="textSecondary">
-                ca. {props.duration} min
-              </Typography>
-            </Grid>
-          )}
-
-          {props.price && (
-            <Grid item xs={6}>
-              <Typography variant="subtitle2" className={classes.textRight}>
-                {props.price},- €
-              </Typography>
-            </Grid>
-          )}
-        </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </Zoom>
   );
 };
