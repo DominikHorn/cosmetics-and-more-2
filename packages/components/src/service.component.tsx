@@ -1,82 +1,134 @@
 import {
-  Card,
-  CardContent,
+  Grid,
+  List,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
-  makeStyles,
+  Paper,
+  Tooltip,
   Typography,
+  makeStyles,
+  useTheme,
 } from "@material-ui/core";
-
+import InfoIcon from "@material-ui/icons/InfoOutlined";
 import React from "react";
 
-const useStyles = makeStyles({
-  // root: {
-  //   minWidth: 275,
-  // },
-  // bullet: {
-  //   display: 'inline-block',
-  //   margin: '0 2px',
-  //   transform: 'scale(0.8)',
-  // },
-  duration: {
-    fontSize: 14,
-  },
-  // pos: {
-  //   marginBottom: 12,
-  // },
-});
-
 export interface IServiceVariant {
-  readonly title: string; // title/name of variant
+  readonly title?: string; // title/name of variant
   readonly price: number; // price in euro
+  readonly info?: string; // additional information (if applicable)
 }
 
 export interface IServiceComponentProps {
-  readonly duration: number; // duration of service in minutes
+  readonly duration?: number; // duration of service in minutes
   readonly title: string; // title of serice
-  readonly description: string; // textual description of the service
-  readonly variants: IServiceVariant[];
+  readonly description?: string; // textual description of the service
+  readonly variants?: IServiceVariant[];
+  readonly price?: number; // price in euro
 }
 
-const ServiceVariant = (props: IServiceVariant) => (
-  <ListItem>
-    <ListItemText>
-      <Typography variant={"body1"}>{props.title}</Typography>
-    </ListItemText>
+const ServiceVariant = (props: IServiceVariant) => {
+  const theme = useTheme();
+  return (
+    <ListItem>
+      {props.title && (
+        <ListItemText>
+          <Grid container spacing={1} alignItems={"center"}>
+            <Grid item>
+              <Typography variant={"body2"}>{props.title}</Typography>
+            </Grid>
+            {props.info && (
+              <Grid item>
+                <Tooltip title={props.info}>
+                  <div
+                    style={{
+                      verticalAlign: "center",
+                      width: theme.typography.body2.fontSize,
+                      height: theme.typography.body2.fontSize,
+                    }}
+                  >
+                    <InfoIcon
+                      aria-label="info"
+                      style={{
+                        color: theme.palette.info.main,
+                        width: theme.typography.body2.fontSize,
+                        height: theme.typography.body2.fontSize,
+                      }}
+                    />
+                  </div>
+                </Tooltip>
+              </Grid>
+            )}
+          </Grid>
+        </ListItemText>
+      )}
 
-    <ListItemSecondaryAction>
-      <Typography variant="h6">{props.price}</Typography>
-    </ListItemSecondaryAction>
-  </ListItem>
-);
+      <ListItemSecondaryAction>
+        <Typography variant="subtitle2">{props.price},- €</Typography>
+      </ListItemSecondaryAction>
+    </ListItem>
+  );
+};
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(1),
+    paddingBottom: 0,
+    width: "100%",
+    height: "100%",
+  },
+  duration: {
+    fontSize: 14,
+  },
+  textRight: {
+    textAlign: "end",
+  },
+  stickToParentBottom: {
+    position: "relative",
+    bottom: 0,
+  },
+}));
 
 export const ServiceComponent = (props: IServiceComponentProps) => {
   const classes = useStyles(props);
   return (
-    <Card>
-      <CardContent>
-        <Typography
-          className={classes.duration}
-          color="textSecondary"
-          gutterBottom
-        >
-          Dauer: {props.duration}
-        </Typography>
+    <Paper elevation={2} className={classes.root}>
+      <Typography variant="h5" component="h2">
+        {props.title}
+      </Typography>
 
-        <Typography variant="h5" component="h2">
-          {props.title}
-        </Typography>
+      {props.description && (
+        <Typography variant={"body2"}>{props.description}</Typography>
+      )}
 
-        {props.variants.length == 1 && (
-          <ServiceVariant {...props.variants[0]} />
-        )}
-
-        <Typography variant={"body1"}>{props.description}</Typography>
-
-        {props.variants.length > 1 &&
+      <List dense={true}>
+        {props.variants &&
           props.variants.map((v, i) => <ServiceVariant key={i} {...v} />)}
-      </CardContent>
-    </Card>
+      </List>
+
+      {props.price && (
+        <Grid container spacing={1} className={classes.stickToParentBottom}>
+          {props.duration && (
+            <Grid item xs={6}>
+              <Typography
+                className={classes.duration}
+                color="textSecondary"
+                gutterBottom
+              >
+                ca. {props.duration} min
+              </Typography>
+            </Grid>
+          )}
+
+          <Grid item xs={6}>
+            <Typography variant="subtitle2" className={classes.textRight}>
+              {props.price},- €
+            </Typography>
+          </Grid>
+        </Grid>
+      )}
+    </Paper>
   );
 };
