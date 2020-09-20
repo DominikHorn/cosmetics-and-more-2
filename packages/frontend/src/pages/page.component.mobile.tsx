@@ -22,6 +22,10 @@ export const MobilePage = (props: IPageProps) => {
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
+  // make sure component is redrawn when view scrolls
+  // (otherwise floating button does not work)
+  useScrollPosition(10);
+
   if (!subpageRefs) {
     subpageRefs = routes.reduce(
       (prev, curr) => ({ ...prev, [curr.path]: React.createRef() }),
@@ -29,21 +33,14 @@ export const MobilePage = (props: IPageProps) => {
     );
   }
 
-  // make sure component is redrawn when view scrolls
-  // (otherwise floating button does not work)
-  useScrollPosition(10);
-
-  // find currently visible page (if multiple are visible, use topmost page)
-  const currentRoute =
-    routes.find((r) => {
-      const ref = subpageRefs[r.path];
-      if (!ref || !ref.current) return false;
-      const rect = ref.current.getBoundingClientRect();
-      return rect.top + rect.height > 0 && rect.top <= window.innerHeight;
-    }) || routes[props.routeIndex];
-  useEffect(() => props.navigateTo(currentRoute), [currentRoute]);
-
+  const isInViewport = (ref: RefObject<any>) => {
+    if (!ref || !ref.current) return false;
+    const rect = ref.current.getBoundingClientRect();
+    return rect.top + rect.height > 0 && rect.top <= window.innerHeight;
+  };
   const scrollTo = (ref: RefObject<any>) => {
+    props.navigateTo(currentRoute);
+    if (isInViewport(ref)) return;
     const rect = ref?.current?.getBoundingClientRect();
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     window.scrollTo({
@@ -52,8 +49,12 @@ export const MobilePage = (props: IPageProps) => {
     });
   };
 
-  // scroll to routed page part (execute exactly once after initial page render)
-  useEffect(() => scrollTo(subpageRefs[routes[props.routeIndex].path]), []);
+  // find currently visible page (if multiple are visible, use topmost page)
+  const currentRoute =
+    routes.find((r) => isInViewport(subpageRefs[r.path])) ||
+    routes[props.routeIndex];
+  // make sure currentPath & visible components matche
+  useEffect(() => scrollTo(subpageRefs[currentRoute.path]), [currentRoute]);
 
   const iOS =
     (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
