@@ -111,7 +111,7 @@ export const ServiceComponent = (props: IService) => {
       timeout={props.appearAnimationDuration || DEFAULT_ANIMATION_DURATION}
       style={{ transitionDelay: props.appearAnimationDelay }}
     >
-      <Paper elevation={3} className={classes.root}>
+      <Paper elevation={0} className={classes.root}>
         <Grid container spacing={1} className={classes.rootGrid}>
           <Grid item xs={12} className={classes.titleItem}>
             <Typography variant="h5" component="h2">
