@@ -7,8 +7,11 @@ import {
   makeStyles,
   useTheme,
 } from "@material-ui/core";
+import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import { TransitionProps } from "@material-ui/core/transitions/transition";
 import InfoIcon from "@material-ui/icons/InfoOutlined";
 import React from "react";
+import { DEFAULT_ANIMATION_DURATION } from "@cosmetics-and-more/types";
 
 export interface IServiceVariant {
   readonly title?: string; // title/name of variant
@@ -22,6 +25,9 @@ export interface IServiceComponentProps {
   readonly description?: string; // textual description of the service
   readonly variants?: IServiceVariant[];
   readonly price?: number; // price in euro
+
+  readonly appearAnimationDuration?: TransitionProps["timeout"];
+  readonly appearAnimationDelay?: CSSProperties["transitionDelay"];
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -86,7 +92,11 @@ export const ServiceComponent = (props: IServiceComponentProps) => {
   const classes = useStyles(props);
 
   return (
-    <Zoom in={true} timeout={500}>
+    <Zoom
+      in={true}
+      timeout={props.appearAnimationDuration || DEFAULT_ANIMATION_DURATION}
+      style={{ transitionDelay: props.appearAnimationDelay }}
+    >
       <Paper elevation={3} className={classes.root}>
         <Grid container spacing={1} className={classes.rootGrid}>
           <Grid item xs={12}>
