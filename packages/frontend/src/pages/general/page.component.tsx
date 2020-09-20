@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { routes, IRoute } from "../routing";
+import { routes, IRoute } from "../../routing";
 import { useMediaQuery } from "@material-ui/core";
 import { INavigationProps } from "./types";
 import { DesktopPage } from "./page.component.desktop";

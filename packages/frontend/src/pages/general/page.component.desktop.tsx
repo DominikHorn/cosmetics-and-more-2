@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { routes } from "../routing";
+import { routes } from "../../routing";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import { INavigationProps } from "./types";
 import { usePageStyles } from "./styles";
