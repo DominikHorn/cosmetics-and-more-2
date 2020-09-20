@@ -2,7 +2,6 @@ import React from "react";
 import { route } from "../routing";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import {
-  createStyles,
   GridList,
   GridListTile,
   makeStyles,
@@ -11,21 +10,19 @@ import {
 } from "@material-ui/core";
 import { galleryImageURLs } from "./content";
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "space-around",
-      overflow: "hidden",
-      backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-      width: "100%",
-      height: "100%",
-    },
-  })
-);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    width: "100%",
+    height: "100%",
+  },
+}));
 
 const ImageGrid = () => {
   const classes = useStyles();
