@@ -34,13 +34,13 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
+  title: {
+    textAlign: "center",
+    minHeight: "60px",
+    marginBottom: theme.spacing(2),
+  },
   textRight: {
     textAlign: "end",
-  },
-  bottomTextWrapper: {
-    position: "relative",
-    height: "100%",
-    width: "100%",
   },
 }));
 
@@ -87,7 +87,7 @@ export const ServiceComponent = (props: IServiceComponentProps) => {
     <Paper elevation={3} className={classes.root}>
       <Grid container spacing={1} className={classes.rootGrid}>
         <Grid item xs={12}>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" className={classes.title}>
             {props.title}
           </Typography>
 
