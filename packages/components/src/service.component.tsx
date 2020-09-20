@@ -1,9 +1,5 @@
 import {
   Grid,
-  List,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText,
   Paper,
   Tooltip,
   Typography,
@@ -27,108 +23,100 @@ export interface IServiceComponentProps {
   readonly price?: number; // price in euro
 }
 
-const ServiceVariant = (props: IServiceVariant) => {
-  const theme = useTheme();
-  return (
-    <ListItem>
-      {props.title && (
-        <ListItemText>
-          <Grid container spacing={1} alignItems={"center"}>
-            <Grid item>
-              <Typography variant={"body2"}>{props.title}</Typography>
-            </Grid>
-            {props.info && (
-              <Grid item>
-                <Tooltip title={props.info}>
-                  <div
-                    style={{
-                      verticalAlign: "center",
-                      width: theme.typography.body2.fontSize,
-                      height: theme.typography.body2.fontSize,
-                    }}
-                  >
-                    <InfoIcon
-                      aria-label="info"
-                      style={{
-                        color: theme.palette.info.main,
-                        width: theme.typography.body2.fontSize,
-                        height: theme.typography.body2.fontSize,
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </Grid>
-            )}
-          </Grid>
-        </ListItemText>
-      )}
-
-      <ListItemSecondaryAction>
-        <Typography variant="subtitle2">{props.price},- €</Typography>
-      </ListItemSecondaryAction>
-    </ListItem>
-  );
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-    paddingBottom: 0,
+    padding: theme.spacing(1),
     width: "100%",
     height: "100%",
   },
-  duration: {
-    fontSize: 14,
+  rootGrid: {
+    margin: 0,
+    width: "100%",
+    height: "100%",
   },
   textRight: {
     textAlign: "end",
   },
-  stickToParentBottom: {
+  bottomTextWrapper: {
     position: "relative",
-    bottom: 0,
+    height: "100%",
+    width: "100%",
   },
 }));
+
+const ServiceVariant = (props: IServiceVariant) => {
+  const classes = useStyles(props);
+  const theme = useTheme();
+  return (
+    <Grid container item xs={12}>
+      <Grid container item xs={10} spacing={0}>
+        {props.title && (
+          <Grid item>
+            <Typography variant={"body2"}>{props.title}</Typography>
+          </Grid>
+        )}
+
+        {props.info && (
+          <Grid item>
+            <Tooltip title={props.info}>
+              <InfoIcon
+                aria-label="info"
+                style={{
+                  color: theme.palette.info.main,
+                  width: theme.typography.body2.fontSize,
+                  height: theme.typography.body2.fontSize,
+                }}
+              />
+            </Tooltip>
+          </Grid>
+        )}
+      </Grid>
+
+      <Grid item xs={2}>
+        <Typography variant="subtitle2" className={classes.textRight}>
+          {props.price},- €
+        </Typography>
+      </Grid>
+    </Grid>
+  );
+};
 
 export const ServiceComponent = (props: IServiceComponentProps) => {
   const classes = useStyles(props);
   return (
-    <Paper elevation={2} className={classes.root}>
-      <Typography variant="h5" component="h2">
-        {props.title}
-      </Typography>
+    <Paper elevation={3} className={classes.root}>
+      <Grid container spacing={1} className={classes.rootGrid}>
+        <Grid item xs={12}>
+          <Typography variant="h5" component="h2">
+            {props.title}
+          </Typography>
 
-      {props.description && (
-        <Typography variant={"body2"}>{props.description}</Typography>
-      )}
+          {props.description && (
+            <Typography variant={"body2"}>{props.description}</Typography>
+          )}
+        </Grid>
 
-      <List dense={true}>
         {props.variants &&
           props.variants.map((v, i) => <ServiceVariant key={i} {...v} />)}
-      </List>
 
-      {props.price && (
-        <Grid container spacing={1} className={classes.stickToParentBottom}>
+        <Grid container item xs={12} spacing={0} style={{ marginTop: "auto" }}>
           {props.duration && (
             <Grid item xs={6}>
-              <Typography
-                className={classes.duration}
-                color="textSecondary"
-                gutterBottom
-              >
+              <Typography variant="subtitle2" color="textSecondary">
                 ca. {props.duration} min
               </Typography>
             </Grid>
           )}
 
-          <Grid item xs={6}>
-            <Typography variant="subtitle2" className={classes.textRight}>
-              {props.price},- €
-            </Typography>
-          </Grid>
+          {props.price && (
+            <Grid item xs={6}>
+              <Typography variant="subtitle2" className={classes.textRight}>
+                {props.price},- €
+              </Typography>
+            </Grid>
+          )}
         </Grid>
-      )}
+      </Grid>
     </Paper>
   );
 };

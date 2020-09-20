@@ -14,9 +14,9 @@ import { ServiceComponent } from "@cosmetics-and-more/components";
 export class ServicesPage extends React.PureComponent {
   render() {
     return (
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {cosmeticServices.map((service, i) => (
-          <Grid item key={i} xs={6} sm={4} xl={1}>
+          <Grid item key={i} xs={12} sm={6} md={4} xl={2}>
             <ServiceComponent {...service} />
           </Grid>
         ))}
