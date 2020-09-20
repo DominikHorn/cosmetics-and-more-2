@@ -58,5 +58,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: "gh-pages", to: "./" }],
     }),
+    new CopyPlugin({
+      patterns: [{ from: "images", to: "images" }],
+    }),
   ],
 };

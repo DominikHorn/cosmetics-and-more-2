@@ -1,29 +1,30 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
-    app: ['react-hot-loader/patch', './dist/index.js'],
+    app: ["react-hot-loader/patch", "./dist/index.js"],
   },
-  devtool: 'eval-source-map',
+  devtool: "eval-source-map",
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: ['source-map-loader'],
-        enforce: 'pre',
+        use: ["source-map-loader"],
+        enforce: "pre",
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader',
+            loader: "html-loader",
             options: { minimize: true },
           },
         ],
@@ -32,9 +33,9 @@ module.exports = {
         test: /\.(png|svg|jpg|gif|pdf)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
+              name: "[name].[ext]",
             },
           },
         ],
@@ -42,17 +43,20 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: ['node_modules'],
-    extensions: ['.js'],
+    modules: ["node_modules"],
+    extensions: [".js"],
     symlinks: true,
     alias: {
-      'react-dom': '@hot-loader/react-dom',
+      "react-dom": "@hot-loader/react-dom",
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
-      inject: 'body',
+      template: path.resolve(__dirname, "src/index.html"),
+      inject: "body",
+    }),
+    new CopyPlugin({
+      patterns: [{ from: "images", to: "images" }],
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -66,8 +70,8 @@ module.exports = {
       ignored: /node_modules/,
     },
     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': '*',
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "*",
     },
   },
 };
