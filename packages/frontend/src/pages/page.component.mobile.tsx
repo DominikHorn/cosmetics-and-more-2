@@ -1,9 +1,18 @@
 import React, { RefObject, useEffect } from "react";
 import { routes } from "../routing";
-import { Menu, MenuItem, Box, Paper, Fab } from "@material-ui/core";
+import {
+  Paper,
+  Fab,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  SwipeableDrawer,
+} from "@material-ui/core";
 import { usePageStyles } from "./styles";
 import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
+import MenuIcon from "@material-ui/icons/Menu";
 
 type SubpageRefs = { [path: string]: RefObject<any> };
 
@@ -11,10 +20,7 @@ let subpageRefs: SubpageRefs;
 export const MobilePage = (props: IPageProps) => {
   const classes = usePageStyles(props);
 
-  const [anchorEl, setAnchorEl] = React.useState<Element | undefined>();
-  const closeMenu = () => {
-    setAnchorEl(undefined);
-  };
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   if (!subpageRefs) {
     subpageRefs = routes.reduce(
@@ -49,6 +55,9 @@ export const MobilePage = (props: IPageProps) => {
   // scroll to routed page part (execute exactly once after initial page render)
   useEffect(() => scrollTo(subpageRefs[routes[props.routeIndex].path]), []);
 
+  const iOS =
+    (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
   return (
     <>
       {routes.map((r, i) => (
@@ -60,35 +69,37 @@ export const MobilePage = (props: IPageProps) => {
       <Fab
         className={classes.stickToBottom}
         color="primary"
-        onClick={(e) => setAnchorEl(e.currentTarget)}
-        variant="extended"
+        onClick={() => setDrawerOpen(!drawerOpen)}
       >
-        {currentRoute.icon}
-        <Box className={classes.marginLeft}>{currentRoute.displayName}</Box>
+        <MenuIcon />
       </Fab>
 
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={closeMenu}
+      <SwipeableDrawer
+        anchor={"right"}
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        onOpen={() => setDrawerOpen(true)}
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
       >
-        {routes.map((r, i) => (
-          <MenuItem
-            key={i}
-            onClick={() => {
-              props.navigateTo(r);
-              scrollTo(subpageRefs[r.path]);
-              closeMenu();
-            }}
-          >
-            <>
-              {r.icon}
-              <Box className={classes.marginLeft}>{r.displayName}</Box>
-            </>
-          </MenuItem>
-        ))}
-      </Menu>
+        <List>
+          {routes.map((r, i) => (
+            <ListItem
+              key={i}
+              alignItems={"center"}
+              selected={currentRoute.path == r.path}
+              onClick={() => {
+                props.navigateTo(r);
+                scrollTo(subpageRefs[r.path]);
+                setDrawerOpen(false);
+              }}
+            >
+              <ListItemIcon>{r.icon}</ListItemIcon>
+              <ListItemText>{r.displayName}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
+      </SwipeableDrawer>
     </>
   );
 };
