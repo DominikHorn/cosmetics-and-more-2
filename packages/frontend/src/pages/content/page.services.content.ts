@@ -3,6 +3,7 @@ import { IService } from "@cosmetics-and-more/components";
 export const cosmeticServices: IService[] = [
   {
     title: "Handpflege",
+    imageURL: "images/services/manicure_low.jpg",
     variants: [
       { title: "Maniküre", price: "14" },
       {
@@ -26,6 +27,7 @@ export const cosmeticServices: IService[] = [
   },
   {
     title: "Fußpflege",
+    imageURL: "images/services/pedicure_low.jpg",
     variants: [
       { title: "Pediküre", price: "20" },
       { title: "Mit Naturlack oder polieren", price: "22" },
@@ -36,12 +38,14 @@ export const cosmeticServices: IService[] = [
   },
   {
     title: "Gesichtsbehandlung",
+    imageURL: "images/services/facial_low.jpg",
     duration: 70,
     description: `Die Gesichtsbehandlung umfasst folgende Leistungen: Reinigung, Hautanalyse, Peeling, Entfernen von Unreinheiten, Augenbrauenkorrektur, Wirkstoffpackung, Gesicht-, Hals und Dekolletemassage, Ampulle, Tagescreme`,
     price: "51",
   },
   {
     title: "Haarentfernung mit Warmwachs",
+    imageURL: "images/services/shave_low.jpg",
     variants: [
       {
         title: "Oberlippe",
@@ -63,12 +67,14 @@ export const cosmeticServices: IService[] = [
   },
   {
     title: "Klassische Rückenmassage mit Peeling",
+    imageURL: "images/services/massage_low.jpg",
     duration: 40,
     description: `Die Massage dient der Lockerung der Muskulatur, entspannt und beruhigt. Durch den Einsatz von natürlichen Ölen wird die Haut gepflegt.`,
     price: "42",
   },
   {
     title: "Sonstiges",
+    imageURL: "images/services/utensilien_low.jpg",
     variants: [
       { title: "Augenbrauenkorrektur", price: "6" },
       { title: "Augenbrauen Färben", price: "6" },
