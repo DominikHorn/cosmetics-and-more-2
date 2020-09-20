@@ -1,9 +1,18 @@
 import React, { RefObject, useEffect } from "react";
 import { routes } from "../routing";
-import { Menu, MenuItem, Box, Paper, Fab } from "@material-ui/core";
+import {
+  Paper,
+  Fab,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  SwipeableDrawer,
+} from "@material-ui/core";
 import { usePageStyles } from "./styles";
 import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
+import MenuIcon from "@material-ui/icons/Menu";
 
 type SubpageRefs = { [path: string]: RefObject<any> };
 
@@ -11,10 +20,11 @@ let subpageRefs: SubpageRefs;
 export const MobilePage = (props: IPageProps) => {
   const classes = usePageStyles(props);
 
-  const [anchorEl, setAnchorEl] = React.useState<Element | undefined>();
-  const closeMenu = () => {
-    setAnchorEl(undefined);
-  };
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  // make sure component is redrawn when view scrolls
+  // (otherwise floating button does not work)
+  useScrollPosition(10);
 
   if (!subpageRefs) {
     subpageRefs = routes.reduce(
@@ -23,21 +33,14 @@ export const MobilePage = (props: IPageProps) => {
     );
   }
 
-  // make sure component is redrawn when view scrolls
-  // (otherwise floating button does not work)
-  useScrollPosition(10);
-
-  // find currently visible page (if multiple are visible, use topmost page)
-  const currentRoute =
-    routes.find((r) => {
-      const ref = subpageRefs[r.path];
-      if (!ref || !ref.current) return false;
-      const rect = ref.current.getBoundingClientRect();
-      return rect.top + rect.height > 0 && rect.top <= window.innerHeight;
-    }) || routes[props.routeIndex];
-  useEffect(() => props.navigateTo(currentRoute), [currentRoute]);
-
+  const isInViewport = (ref: RefObject<any>) => {
+    if (!ref || !ref.current) return false;
+    const rect = ref.current.getBoundingClientRect();
+    return rect.top + rect.height > 0 && rect.top <= window.innerHeight;
+  };
   const scrollTo = (ref: RefObject<any>) => {
+    props.navigateTo(currentRoute);
+    if (isInViewport(ref)) return;
     const rect = ref?.current?.getBoundingClientRect();
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     window.scrollTo({
@@ -46,8 +49,15 @@ export const MobilePage = (props: IPageProps) => {
     });
   };
 
-  // scroll to routed page part (execute exactly once after initial page render)
-  useEffect(() => scrollTo(subpageRefs[routes[props.routeIndex].path]), []);
+  // find currently visible page (if multiple are visible, use topmost page)
+  const currentRoute =
+    routes.find((r) => isInViewport(subpageRefs[r.path])) ||
+    routes[props.routeIndex];
+  // make sure currentPath & visible components matche
+  useEffect(() => scrollTo(subpageRefs[currentRoute.path]), [currentRoute]);
+
+  const iOS =
+    (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   return (
     <>
@@ -60,35 +70,37 @@ export const MobilePage = (props: IPageProps) => {
       <Fab
         className={classes.stickToBottom}
         color="primary"
-        onClick={(e) => setAnchorEl(e.currentTarget)}
-        variant="extended"
+        onClick={() => setDrawerOpen(!drawerOpen)}
       >
-        {currentRoute.icon}
-        <Box className={classes.marginLeft}>{currentRoute.displayName}</Box>
+        <MenuIcon />
       </Fab>
 
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={closeMenu}
+      <SwipeableDrawer
+        anchor={"right"}
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        onOpen={() => setDrawerOpen(true)}
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
       >
-        {routes.map((r, i) => (
-          <MenuItem
-            key={i}
-            onClick={() => {
-              props.navigateTo(r);
-              scrollTo(subpageRefs[r.path]);
-              closeMenu();
-            }}
-          >
-            <>
-              {r.icon}
-              <Box className={classes.marginLeft}>{r.displayName}</Box>
-            </>
-          </MenuItem>
-        ))}
-      </Menu>
+        <List>
+          {routes.map((r, i) => (
+            <ListItem
+              key={i}
+              alignItems={"center"}
+              selected={currentRoute.path == r.path}
+              onClick={() => {
+                props.navigateTo(r);
+                scrollTo(subpageRefs[r.path]);
+                setDrawerOpen(false);
+              }}
+            >
+              <ListItemIcon>{r.icon}</ListItemIcon>
+              <ListItemText>{r.displayName}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
+      </SwipeableDrawer>
     </>
   );
 };

@@ -7,9 +7,6 @@ export const usePageStyles = makeStyles((theme) => ({
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
-  marginLeft: {
-    marginLeft: theme.spacing(1),
-  },
   tabIndicator: {
     height: "2px",
   },
