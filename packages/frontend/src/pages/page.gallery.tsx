@@ -50,7 +50,7 @@ const ImageGrid = () => {
   displayName: "Galerie",
   path: "/gallery",
   icon: <PhotoLibraryIcon />,
-  prio: 4,
+  prio: 3,
 })
 export class GaleriePage extends React.PureComponent {
   render() {

@@ -14,13 +14,13 @@ import React from "react";
 import { DEFAULT_ANIMATION_DURATION } from "@cosmetics-and-more/types";
 
 export interface IServiceVariantHeader {
-  readonly titleHeader?: string;
-  readonly priceHeader?: string;
+  readonly title?: string;
+  readonly price?: string;
 }
 
 export interface IServiceVariant {
   readonly title?: string; // title/name of variant
-  readonly price: string; // price in euro (number might lead to fancy decimal weirdness)
+  readonly price?: string; // price in euro (number might lead to fancy decimal weirdness)
   readonly info?: string; // additional information (if applicable)
 }
 
@@ -96,11 +96,13 @@ const ServiceVariant = (props: IServiceVariant) => {
         )}
       </Grid>
 
-      <Grid item xs={4}>
-        <Typography variant="subtitle2" className={classes.textRight}>
-          {props.price} €
-        </Typography>
-      </Grid>
+      {props.price && (
+        <Grid item xs={4}>
+          <Typography variant="subtitle2" className={classes.textRight}>
+            {props.price} €
+          </Typography>
+        </Grid>
+      )}
     </Grid>
   );
 };
@@ -140,17 +142,17 @@ const Variants = (props: IService) => {
       {props.variantsHeader && (
         <Grid container item xs={12}>
           <Grid item xs={8}>
-            {props.variantsHeader.titleHeader && (
+            {props.variantsHeader.title && (
               <Typography variant="subtitle2" color="textSecondary">
-                {props.variantsHeader.priceHeader}
+                {props.variantsHeader.price}
               </Typography>
             )}
           </Grid>
 
           <Grid item xs={4} className={classes.textRight}>
-            {props.variantsHeader.priceHeader && (
+            {props.variantsHeader.price && (
               <Typography variant="subtitle2" color="textSecondary">
-                {props.variantsHeader.priceHeader}
+                {props.variantsHeader.price}
               </Typography>
             )}
           </Grid>
