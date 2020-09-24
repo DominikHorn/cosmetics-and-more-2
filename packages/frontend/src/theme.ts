@@ -13,6 +13,7 @@ export const lightTheme: ThemeOptions = {
   typography: {
     h5: {
       fontWeight: 700,
+      fontSize: "20px",
     },
   },
 };
@@ -29,6 +30,7 @@ export const darkTheme: ThemeOptions = {
   typography: {
     h5: {
       fontWeight: 700,
+      fontSize: "20px",
     },
   },
 };
