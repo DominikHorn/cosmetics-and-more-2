@@ -1,5 +1,5 @@
 import { ThemeOptions } from "@material-ui/core";
-import { deepOrange, lightBlue, lime, teal } from "@material-ui/core/colors";
+import { blueGrey, deepPurple, lime, teal } from "@material-ui/core/colors";
 
 export const lightTheme: ThemeOptions = {
   palette: {
@@ -11,6 +11,14 @@ export const lightTheme: ThemeOptions = {
     type: "light",
   },
   typography: {
+    h1: {
+      fontSize: "42px",
+      fontWeight: 500,
+    },
+    h3: {
+      fontSize: "30px",
+      fontWeight: 400,
+    },
     h5: {
       fontWeight: 700,
       fontSize: "20px",
@@ -19,18 +27,13 @@ export const lightTheme: ThemeOptions = {
 };
 
 export const darkTheme: ThemeOptions = {
+  ...lightTheme,
   palette: {
-    primary: deepOrange,
-    secondary: lightBlue,
+    primary: deepPurple,
+    secondary: blueGrey,
     background: {
       default: "#212121",
     },
     type: "dark",
-  },
-  typography: {
-    h5: {
-      fontWeight: 700,
-      fontSize: "20px",
-    },
   },
 };
