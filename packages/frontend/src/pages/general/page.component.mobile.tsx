@@ -80,14 +80,14 @@ export const MobilePage = (props: IPageProps) => {
   return (
     <>
       {routes.map((r, i) => (
-        <div key={i}>
+        <div key={i} ref={subpageRefs[r.path]}>
           {i > 0 && (
             <Typography variant="h2" className={classes.pageTitle}>
               {r.displayName}
             </Typography>
           )}
 
-          <Paper ref={subpageRefs[r.path]} elevation={0}>
+          <Paper elevation={0}>
             {React.createElement(r.component as React.ComponentClass, {}, null)}
           </Paper>
         </div>
