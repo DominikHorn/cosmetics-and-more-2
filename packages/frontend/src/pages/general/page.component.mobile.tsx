@@ -1,24 +1,42 @@
 import React, { RefObject, useEffect } from "react";
 import { routes } from "../../routing";
 import {
-  Paper,
   Fab,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Paper,
   SwipeableDrawer,
+  makeStyles,
+  Typography,
 } from "@material-ui/core";
-import { usePageStyles } from "./styles";
 import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
 import MenuIcon from "@material-ui/icons/Menu";
 
 type SubpageRefs = { [path: string]: RefObject<any> };
 
+const useStyles = makeStyles((theme) => ({
+  stickToBottom: {
+    /* stick to bottom of screen */
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+  },
+  tabIndicator: {
+    height: "2px",
+  },
+  pageTitle: {
+    textAlign: "center",
+    marginTop: theme.spacing(12),
+    marginBottom: theme.spacing(2),
+  },
+}));
+
 let subpageRefs: SubpageRefs;
 export const MobilePage = (props: IPageProps) => {
-  const classes = usePageStyles(props);
+  const classes = useStyles(props);
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
@@ -62,9 +80,17 @@ export const MobilePage = (props: IPageProps) => {
   return (
     <>
       {routes.map((r, i) => (
-        <Paper key={i} ref={subpageRefs[r.path]}>
-          {React.createElement(r.component as React.ComponentClass, {}, null)}
-        </Paper>
+        <div key={i} ref={subpageRefs[r.path]}>
+          {i > 0 && (
+            <Typography variant="h2" className={classes.pageTitle}>
+              {r.displayName}
+            </Typography>
+          )}
+
+          <Paper elevation={0}>
+            {React.createElement(r.component as React.ComponentClass, {}, null)}
+          </Paper>
+        </div>
       ))}
 
       <Fab
