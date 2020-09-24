@@ -14,8 +14,13 @@ import React from "react";
 import { DEFAULT_ANIMATION_DURATION } from "@cosmetics-and-more/types";
 
 export interface IServiceVariantHeader {
-  readonly title?: string;
-  readonly price?: string;
+  readonly titleColumn?: string;
+  readonly priceColumn?: string;
+}
+
+export interface IServiceVariantFooter {
+  readonly titleColumn?: string;
+  readonly priceColumn?: string;
 }
 
 export interface IServiceVariant {
@@ -29,6 +34,7 @@ export interface IService {
   readonly title: string; // title of serice
   readonly description?: string; // textual description of the service
   readonly variantsHeader?: IServiceVariantHeader;
+  readonly variantsFooter?: IServiceVariantFooter;
   readonly variants?: IServiceVariant[];
   readonly price?: string; // price in euro
   readonly imageURL?: string; // url to image to display
@@ -142,17 +148,17 @@ const Variants = (props: IService) => {
       {props.variantsHeader && (
         <Grid container item xs={12}>
           <Grid item xs={8}>
-            {props.variantsHeader.title && (
+            {props.variantsHeader.titleColumn && (
               <Typography variant="subtitle2" color="textSecondary">
-                {props.variantsHeader.price}
+                {props.variantsHeader.priceColumn}
               </Typography>
             )}
           </Grid>
 
           <Grid item xs={4} className={classes.textRight}>
-            {props.variantsHeader.price && (
+            {props.variantsHeader.priceColumn && (
               <Typography variant="subtitle2" color="textSecondary">
-                {props.variantsHeader.price}
+                {props.variantsHeader.priceColumn}
               </Typography>
             )}
           </Grid>
@@ -161,6 +167,25 @@ const Variants = (props: IService) => {
       {props.variants.map((v, i) => (
         <ServiceVariant key={i} {...v} />
       ))}
+      {props.variantsFooter && (
+        <Grid container item xs={12}>
+          <Grid item xs={8}>
+            {props.variantsFooter.titleColumn && (
+              <Typography variant="subtitle2" color="textSecondary">
+                {props.variantsFooter.priceColumn}
+              </Typography>
+            )}
+          </Grid>
+
+          <Grid item xs={4} className={classes.textRight}>
+            {props.variantsFooter.priceColumn && (
+              <Typography variant="subtitle2" color="textSecondary">
+                {props.variantsFooter.priceColumn}
+              </Typography>
+            )}
+          </Grid>
+        </Grid>
+      )}
     </Grid>
   );
 };

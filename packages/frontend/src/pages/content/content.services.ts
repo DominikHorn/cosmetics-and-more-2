@@ -87,7 +87,7 @@ export const hairServices: IService[] = [
   {
     title: "Damen - Frisur",
     imageURL: "images/services/flechten_low.jpg",
-    variantsHeader: { price: "kurz / lang" },
+    variantsHeader: { priceColumn: "kurz / lang" },
     variants: [
       {
         title: "Trockenschnitt",
@@ -108,7 +108,7 @@ export const hairServices: IService[] = [
   {
     title: "Damen - Farbe",
     imageURL: "images/services/faerben_low.jpg",
-    variantsHeader: { price: "kurz / lang" },
+    variantsHeader: { priceColumn: "kurz / lang" },
     variants: [
       {
         title: "Foliensträhne",
@@ -124,7 +124,7 @@ export const hairServices: IService[] = [
   {
     title: "Herren/Kinder",
     imageURL: "images/services/schneiden_low.jpg",
-    variantsHeader: { price: "kurz / lang" },
+    variantsHeader: { priceColumn: "kurz / lang" },
     variants: [
       { title: "Schnitt Jungs", info: "Bis 14 Jahre", price: "13" },
       {
