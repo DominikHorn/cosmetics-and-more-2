@@ -26,18 +26,19 @@ export const HomeContent = () => {
   const xs = useMediaQuery(theme.breakpoints.down("xs"), { noSsr: true });
 
   return (
-    <Grid container spacing={4} alignItems={"center"}>
-      <Grid item xs={12} sm={6} className={classes.image}>
-        <img
-          src={"images/home/profile_low.png"}
-          width={xs ? "100%" : "300px"}
-        />
-      </Grid>
+    <Grid container spacing={2} alignItems={"center"}>
+      {!xs && (
+        <Grid item xs={12} sm={5} className={classes.image}>
+          <img src={"images/home/profile_low.png"} width={"75%"} />
+        </Grid>
+      )}
 
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={7}>
         <Typography variant="h3" className={classes.title}>
           {"Herzlich Willkommen bei Cosmetics and More"}
         </Typography>
+
+        {xs && <img src={"images/home/profile_low.png"} width={"50%"} />}
 
         <Typography variant="body1" className={classes.description}>
           {`Hallo liebe Besucherin, Hallo lieber Besucher, mein Name ist Katarzyna Thurand und ich freue mich 
@@ -48,7 +49,11 @@ export const HomeContent = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={5}>
+        <img src={"images/home/wellness_low.jpg"} width={"100%"} />
+      </Grid>
+
+      <Grid item xs={12} sm={7}>
         <Typography variant="h3" className={classes.title}>
           {"Kosmetik"}
         </Typography>
@@ -61,15 +66,11 @@ export const HomeContent = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} sm={6}>
-        <img src={"images/home/wellness_low.jpg"} width={"100%"} />
-      </Grid>
-
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={5}>
         <img src={"images/home/kaemmen_low.jpg"} width={"100%"} />
       </Grid>
 
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={7}>
         <Typography variant="h3" className={classes.title}>
           {"Friseur"}
         </Typography>
