@@ -35,7 +35,6 @@ const ImageGrid = () => {
       cellHeight={400}
       className={classes.gridList}
       cols={xs ? 1 : sm ? 2 : 3}
-      style={{ width: xs ? "80%" : "100%", margin: "auto" }}
     >
       {galleryImageURLs.map((url, i) => (
         <GridListTile key={i} cols={1}>
