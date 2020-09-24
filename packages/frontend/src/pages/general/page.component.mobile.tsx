@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pageTitle: {
     textAlign: "center",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(12),
     marginBottom: theme.spacing(2),
   },
 }));
