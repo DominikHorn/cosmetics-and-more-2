@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
   variantsItem: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
   descriptionItem: {
     marginLeft: theme.spacing(1),
