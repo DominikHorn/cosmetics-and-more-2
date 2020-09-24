@@ -1,12 +1,23 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { routes } from "../../routing";
-import { AppBar, Tabs, Tab, useTheme } from "@material-ui/core";
+import { AppBar, Tabs, Tab, useTheme, makeStyles } from "@material-ui/core";
 import { INavigationProps } from "./types";
-import { usePageStyles } from "./styles";
+
+const useStyles = makeStyles((theme) => ({
+  stickToBottom: {
+    /* stick to bottom of screen */
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+  },
+  tabIndicator: {
+    height: "2px",
+  },
+}));
 
 export const DesktopPage = (props: INavigationProps) => {
-  const classes = usePageStyles(props);
+  const classes = useStyles(props);
   const theme = useTheme();
 
   return (
