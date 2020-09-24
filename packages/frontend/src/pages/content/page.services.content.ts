@@ -66,7 +66,7 @@ export const cosmeticServices: IService[] = [
     ],
   },
   {
-    title: "Klassische Rückenmassage mit Peeling",
+    title: "Rückenmassage mit Peeling",
     imageURL: "images/services/massage_low.jpg",
     duration: 40,
     description: `Die Massage dient der Lockerung der Muskulatur, entspannt und beruhigt. Durch den Einsatz von natürlichen Ölen wird die Haut gepflegt.`,
