@@ -9,6 +9,7 @@ import {
   Paper,
   SwipeableDrawer,
   makeStyles,
+  Typography,
 } from "@material-ui/core";
 import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
@@ -29,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
   pageWrapper: {
     margin: theme.spacing(1),
     padding: theme.spacing(1),
+  },
+  pageTitle: {
+    textAlign: "center",
+    marginBottom: theme.spacing(2),
   },
 }));
 
@@ -84,6 +89,9 @@ export const MobilePage = (props: IPageProps) => {
           elevation={0}
           className={classes.pageWrapper}
         >
+          <Typography variant="h2" className={classes.pageTitle}>
+            {r.displayName}
+          </Typography>
           {React.createElement(r.component as React.ComponentClass, {}, null)}
         </Paper>
       ))}
