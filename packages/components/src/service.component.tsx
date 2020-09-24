@@ -42,31 +42,29 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
-  rootGrid: {
+  image: {
     width: "100%",
-    height: "100%",
-  },
-  contentGrid: {
-    margin: theme.spacing(1),
-  },
-  titleItem: {
-    textAlign: "center",
-  },
-  imageItem: {
-    padding: "0px !important",
+    maxHeight: "200px", // must be the same as imageItem maxHeight
+    objectFit: "cover",
   },
   textRight: {
     textAlign: "end",
   },
-  spaceTop: {
-    marginTop: "auto",
+  titleItem: {
+    textAlign: "center",
+    margin: theme.spacing(1.5),
   },
-  spaceBottom: {
-    marginBottom: "auto",
+  variantsItem: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
-  spaceTopBottom: {
-    marginTop: "auto",
-    marginBottom: "auto",
+  descriptionItem: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  footerItem: {
+    margin: theme.spacing(1),
+    marginBottom: theme.spacing(0.5),
   },
 }));
 
@@ -107,6 +105,88 @@ const ServiceVariant = (props: IServiceVariant) => {
   );
 };
 
+const Image = (props: IService) => {
+  const classes = useStyles(props);
+  if (!props.imageURL) return null;
+  return <img src={props.imageURL} className={classes.image} />;
+};
+
+const Title = (props: IService) => {
+  const classes = useStyles(props);
+  return (
+    <Grid item xs={12} className={classes.titleItem}>
+      <Typography variant="h5" component="h2">
+        {props.title}
+      </Typography>
+    </Grid>
+  );
+};
+
+const Description = (props: IService) => {
+  const classes = useStyles(props);
+  if (!props.description) return null;
+  return (
+    <Grid item xs={12} className={classes.descriptionItem}>
+      <Typography variant={"body2"}>{props.description}</Typography>
+    </Grid>
+  );
+};
+
+const Variants = (props: IService) => {
+  const classes = useStyles(props);
+  if (!props.variants) return null;
+  return (
+    <Grid container item xs={12} spacing={0} className={classes.variantsItem}>
+      {props.variantsHeader && (
+        <Grid container item xs={12}>
+          <Grid item xs={8}>
+            {props.variantsHeader.titleHeader && (
+              <Typography variant="subtitle2" color="textSecondary">
+                {props.variantsHeader.priceHeader}
+              </Typography>
+            )}
+          </Grid>
+
+          <Grid item xs={4} className={classes.textRight}>
+            {props.variantsHeader.priceHeader && (
+              <Typography variant="subtitle2" color="textSecondary">
+                {props.variantsHeader.priceHeader}
+              </Typography>
+            )}
+          </Grid>
+        </Grid>
+      )}
+      {props.variants.map((v, i) => (
+        <ServiceVariant key={i} {...v} />
+      ))}
+    </Grid>
+  );
+};
+
+const Footer = (props: IService) => {
+  const classes = useStyles(props);
+  if (!props.duration && !props.price) return null;
+  return (
+    <Grid container item xs={12} spacing={0} className={classes.footerItem}>
+      {props.duration && (
+        <Grid item xs={6}>
+          <Typography variant="subtitle2" color="textSecondary">
+            ca. {props.duration} min
+          </Typography>
+        </Grid>
+      )}
+
+      {props.price && (
+        <Grid item xs={6}>
+          <Typography variant="subtitle2" className={classes.textRight}>
+            {props.price} €
+          </Typography>
+        </Grid>
+      )}
+    </Grid>
+  );
+};
+
 export const ServiceComponent = (props: IService) => {
   const classes = useStyles(props);
 
@@ -117,96 +197,13 @@ export const ServiceComponent = (props: IService) => {
       style={{ transitionDelay: props.appearAnimationDelay }}
     >
       <Paper elevation={0} className={classes.root}>
-        <Grid container spacing={0} className={classes.rootGrid}>
-          {props.imageURL && (
-            <Grid item xs={12} className={classes.imageItem}>
-              <img
-                src={props.imageURL}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  maxHeight: "200px",
-                  objectFit: "cover",
-                }}
-              />
-            </Grid>
-          )}
+        <Image {...props} />
 
-          <Grid item container spacing={1} className={classes.contentGrid}>
-            <Grid item xs={12} className={classes.titleItem}>
-              <Typography variant="h5" component="h2">
-                {props.title}
-              </Typography>
-            </Grid>
-
-            {props.description && (
-              <Grid item xs={12} className={classes.spaceTop}>
-                <Typography variant={"body2"}>{props.description}</Typography>
-              </Grid>
-            )}
-
-            {props.variants && (
-              <Grid
-                container
-                item
-                xs={12}
-                spacing={0}
-                className={classes.spaceBottom}
-              >
-                {props.variantsHeader && (
-                  <Grid container item xs={12}>
-                    <Grid item xs={8}>
-                      {props.variantsHeader.titleHeader && (
-                        <Typography variant="subtitle2" color="textSecondary">
-                          {props.variantsHeader.priceHeader}
-                        </Typography>
-                      )}
-                    </Grid>
-
-                    <Grid item xs={4} className={classes.textRight}>
-                      {props.variantsHeader.priceHeader && (
-                        <Typography variant="subtitle2" color="textSecondary">
-                          {props.variantsHeader.priceHeader}
-                        </Typography>
-                      )}
-                    </Grid>
-                  </Grid>
-                )}
-                {props.variants.map((v, i) => (
-                  <ServiceVariant key={i} {...v} />
-                ))}
-              </Grid>
-            )}
-
-            {(props.duration || props.price) && (
-              <Grid
-                container
-                item
-                xs={12}
-                spacing={0}
-                className={classes.spaceTop}
-              >
-                {props.duration && (
-                  <Grid item xs={6}>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      ca. {props.duration} min
-                    </Typography>
-                  </Grid>
-                )}
-
-                {props.price && (
-                  <Grid item xs={6}>
-                    <Typography
-                      variant="subtitle2"
-                      className={classes.textRight}
-                    >
-                      {props.price} €
-                    </Typography>
-                  </Grid>
-                )}
-              </Grid>
-            )}
-          </Grid>
+        <Grid container spacing={0}>
+          <Title {...props} />
+          <Description {...props} />
+          <Variants {...props} />
+          <Footer {...props} />
         </Grid>
       </Paper>
     </Zoom>
