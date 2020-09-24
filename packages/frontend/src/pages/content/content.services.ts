@@ -132,6 +132,7 @@ export const hairServices: IService[] = [
         info: "Bis 14 Jahre",
         price: "13 / 16",
       },
+      { title: "\xa0" }, // spacing to distinguish children from adults
       { title: "Schneiden mit Maschine", price: "15" },
       { title: "Trockenschnitt", price: "19" },
       { title: "Waschen, Schneiden, Föhnen", price: "24" },
