@@ -5,7 +5,6 @@ import {
   Typography,
   Zoom,
   makeStyles,
-  useTheme,
 } from "@material-ui/core";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
@@ -73,11 +72,16 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     marginBottom: theme.spacing(0.5),
   },
+  infoIcon: {
+    color: theme.palette.info.main,
+    marginLeft: "2px",
+    width: "16px",
+    height: "16px",
+  },
 }));
 
 const ServiceVariant = (props: IServiceVariant) => {
   const classes = useStyles(props);
-  const theme = useTheme();
 
   const [tooltipOpen, setTooltipOpen] = useState(false);
   return (
@@ -92,18 +96,14 @@ const ServiceVariant = (props: IServiceVariant) => {
         {props.info && (
           <Grid item>
             <Tooltip
-              title={props.info}
               arrow
               open={tooltipOpen}
               placement={"top"}
+              title={props.info}
             >
               <InfoIcon
                 aria-label="info"
-                style={{
-                  color: theme.palette.info.main,
-                  width: theme.typography.body2.fontSize,
-                  height: theme.typography.body2.fontSize,
-                }}
+                className={classes.infoIcon}
                 onMouseEnter={() => setTooltipOpen(true)}
                 onMouseLeave={() => setTooltipOpen(false)}
               />
