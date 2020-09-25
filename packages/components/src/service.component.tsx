@@ -10,7 +10,7 @@ import {
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
 import InfoIcon from "@material-ui/icons/InfoOutlined";
-import React from "react";
+import React, { useState } from "react";
 import { DEFAULT_ANIMATION_DURATION } from "@cosmetics-and-more/types";
 
 export interface IServiceVariantHeader {
@@ -78,6 +78,8 @@ const useStyles = makeStyles((theme) => ({
 const ServiceVariant = (props: IServiceVariant) => {
   const classes = useStyles(props);
   const theme = useTheme();
+
+  const [tooltipOpen, setTooltipOpen] = useState(false);
   return (
     <Grid container item xs={12}>
       <Grid container item xs={8} spacing={0}>
@@ -89,7 +91,12 @@ const ServiceVariant = (props: IServiceVariant) => {
 
         {props.info && (
           <Grid item>
-            <Tooltip title={props.info}>
+            <Tooltip
+              title={props.info}
+              arrow
+              open={tooltipOpen}
+              placement={"top"}
+            >
               <InfoIcon
                 aria-label="info"
                 style={{
@@ -97,6 +104,8 @@ const ServiceVariant = (props: IServiceVariant) => {
                   width: theme.typography.body2.fontSize,
                   height: theme.typography.body2.fontSize,
                 }}
+                onMouseEnter={() => setTooltipOpen(true)}
+                onMouseLeave={() => setTooltipOpen(false)}
               />
             </Tooltip>
           </Grid>
