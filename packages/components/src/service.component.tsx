@@ -78,12 +78,16 @@ const useStyles = makeStyles((theme) => ({
     width: "16px",
     height: "16px",
   },
+  tooltipPlacement: {
+    margin: "8px 0",
+  },
 }));
 
 const ServiceVariant = (props: IServiceVariant) => {
   const classes = useStyles(props);
 
   const [tooltipOpen, setTooltipOpen] = useState(false);
+
   return (
     <Grid container item xs={12}>
       <Grid container item xs={8} spacing={0}>
@@ -99,6 +103,10 @@ const ServiceVariant = (props: IServiceVariant) => {
               arrow
               open={tooltipOpen}
               placement={"top"}
+              classes={{
+                tooltipPlacementTop: classes.tooltipPlacement,
+                tooltipPlacementBottom: classes.tooltipPlacement,
+              }}
               title={props.info}
             >
               <InfoIcon
