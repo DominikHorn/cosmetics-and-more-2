@@ -5,12 +5,11 @@ import {
   Typography,
   Zoom,
   makeStyles,
-  useTheme,
 } from "@material-ui/core";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
 import InfoIcon from "@material-ui/icons/InfoOutlined";
-import React from "react";
+import React, { useState } from "react";
 import { DEFAULT_ANIMATION_DURATION } from "@cosmetics-and-more/types";
 
 export interface IServiceVariantHeader {
@@ -73,11 +72,22 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     marginBottom: theme.spacing(0.5),
   },
+  infoIcon: {
+    color: theme.palette.info.main,
+    marginLeft: "2px",
+    width: "16px",
+    height: "16px",
+  },
+  tooltipPlacement: {
+    margin: "8px 0",
+  },
 }));
 
 const ServiceVariant = (props: IServiceVariant) => {
   const classes = useStyles(props);
-  const theme = useTheme();
+
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+
   return (
     <Grid container item xs={12}>
       <Grid container item xs={8} spacing={0}>
@@ -89,14 +99,21 @@ const ServiceVariant = (props: IServiceVariant) => {
 
         {props.info && (
           <Grid item>
-            <Tooltip title={props.info}>
+            <Tooltip
+              arrow
+              open={tooltipOpen}
+              placement={"top"}
+              classes={{
+                tooltipPlacementTop: classes.tooltipPlacement,
+                tooltipPlacementBottom: classes.tooltipPlacement,
+              }}
+              title={props.info}
+            >
               <InfoIcon
                 aria-label="info"
-                style={{
-                  color: theme.palette.info.main,
-                  width: theme.typography.body2.fontSize,
-                  height: theme.typography.body2.fontSize,
-                }}
+                className={classes.infoIcon}
+                onMouseEnter={() => setTooltipOpen(true)}
+                onMouseLeave={() => setTooltipOpen(false)}
               />
             </Tooltip>
           </Grid>
