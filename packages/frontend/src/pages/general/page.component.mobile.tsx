@@ -70,7 +70,8 @@ export const MobilePage = (props: IPageProps) => {
   // find currently visible page (if multiple are visible, use topmost page)
   const currentRoute =
     routes.find((r) => isInViewport(subpageRefs[r.path])) ||
-    routes[props.routeIndex];
+    routes[props.routeIndex] ||
+    routes[0];
   // make sure currentPath & visible components matche
   useEffect(() => scrollTo(subpageRefs[currentRoute.path]), [currentRoute]);
 
