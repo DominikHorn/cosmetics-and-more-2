@@ -10,19 +10,12 @@ import {
 } from "@material-ui/core";
 import { galleryImageURLs } from "./content";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-  },
+const useStyles = makeStyles({
   gridList: {
     width: "100%",
     height: "100%",
   },
-}));
+});
 
 const ImageGrid = () => {
   const classes = useStyles();
