@@ -1,5 +1,5 @@
 import React, { RefObject, useEffect } from "react";
-import { routes } from "../../routing";
+import { IRoute, routes } from "../../routing";
 import {
   Fab,
   List,
@@ -60,20 +60,26 @@ export const MobilePage = (props: IPageProps) => {
     );
   }
 
+  const getCoords = (ref: RefObject<any>) => {
+    var box = ref.current.getBoundingClientRect();
+
+    var body = document.body;
+    var docEl = document.documentElement;
+
+    var scrollPosY = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+
+    var clientTop = docEl.clientTop || body.clientTop || 0;
+
+    var top = box.top + scrollPosY - clientTop;
+    var bottom = top + box.height;
+
+    return { top: top, bottom: bottom };
+  };
+
   const isInViewport = (ref: RefObject<any>) => {
     if (!ref || !ref.current) return false;
-    const rect = ref.current.getBoundingClientRect();
-    return rect.top + rect.height > 0 && rect.top <= window.innerHeight;
-  };
-  const scrollTo = (ref: RefObject<any>) => {
-    props.navigateTo(currentRoute);
-    if (isInViewport(ref)) return;
-    const rect = ref?.current?.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    window.scrollTo({
-      top: rect.top + scrollTop || 0,
-      behavior: "smooth",
-    });
+    const coords = getCoords(ref);
+    return coords.bottom > 0 && coords.top <= window.innerHeight;
   };
 
   // find currently visible page (if multiple are visible, use topmost page)
@@ -81,8 +87,20 @@ export const MobilePage = (props: IPageProps) => {
     routes.find((r) => isInViewport(subpageRefs[r.path])) ||
     routes[props.routeIndex] ||
     routes[0];
-  // make sure currentPath & visible components matche
-  useEffect(() => scrollTo(subpageRefs[currentRoute.path]), [currentRoute]);
+
+  const scrollTo = (route: IRoute) =>
+    window.scrollTo({
+      top: getCoords(subpageRefs[route.path]).top,
+      behavior: "smooth",
+    });
+
+  useEffect(
+    () => window.addEventListener("load", () => scrollTo(currentRoute)),
+    []
+  );
+
+  // make sure currentPath & visible components
+  useEffect(() => props.navigateTo(currentRoute), [currentRoute]);
 
   const iOS =
     (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -123,7 +141,7 @@ export const MobilePage = (props: IPageProps) => {
               selected={currentRoute.path == r.path}
               onClick={() => {
                 props.navigateTo(r);
-                scrollTo(subpageRefs[r.path]);
+                scrollTo(r);
                 setDrawerOpen(false);
               }}
             >
