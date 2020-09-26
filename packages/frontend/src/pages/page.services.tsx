@@ -12,22 +12,19 @@ const ServiceGrid = () => {
 
   return (
     <Grid container spacing={xs ? 0 : 1}>
-      {cosmeticServices.map((service, i) => (
-        <Grid item key={i} xs={12} sm={6} md={4} xl={2}>
+      {[...cosmeticServices, ...hairServices].map((service, i) => (
+        <Grid
+          item
+          key={i}
+          xs={12}
+          sm={6}
+          md={4}
+          xl={2}
+          style={{ marginBottom: xs ? theme.spacing(4) : 0 }}
+        >
           <ServiceComponent
             {...service}
             appearAnimationDelay={`${DEFAULT_ANIMATION_DELAY * i}ms`}
-          />
-        </Grid>
-      ))}
-
-      {hairServices.map((service, i) => (
-        <Grid item key={i} xs={12} sm={6} md={4} xl={2}>
-          <ServiceComponent
-            {...service}
-            appearAnimationDelay={`${
-              DEFAULT_ANIMATION_DELAY * (hairServices.length - i)
-            }ms`}
           />
         </Grid>
       ))}
