@@ -26,7 +26,7 @@ export const HomeContent = () => {
   const xs = useMediaQuery(theme.breakpoints.down("xs"), { noSsr: true });
 
   return (
-    <Grid container spacing={2} alignItems={"center"}>
+    <Grid container spacing={xs ? 0 : 2} alignItems={"center"}>
       {!xs && (
         <Grid
           item
