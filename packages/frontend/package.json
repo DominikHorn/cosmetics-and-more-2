@@ -16,6 +16,7 @@
   "dependencies": {
     "@cosmetics-and-more/components": "^1.0.0",
     "@cosmetics-and-more/types": "^1.0.0",
+    "@cosmetics-and-more/utilities": "^1.0.0",
     "@material-ui/core": "^4.9.11",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.50",
