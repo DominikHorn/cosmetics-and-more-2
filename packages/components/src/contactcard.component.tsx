@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(16),
     height: theme.spacing(16),
-    border: `1px solid lightGray`,
+    border: `1px solid rgba(0, 0, 0, 0.12)`,
   },
   centerText: {
     textAlign: "center",
