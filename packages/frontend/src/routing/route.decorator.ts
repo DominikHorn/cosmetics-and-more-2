@@ -2,6 +2,7 @@ import { IRoute } from "./types";
 import React from "react";
 import { ThemeOptions } from "@material-ui/core";
 import { baseDarkTheme, baseLightTheme } from "../theme";
+import { mergeDeep } from "@cosmetics-and-more/utilities";
 
 export const routes: (IRoute & {
   darkTheme: ThemeOptions;
@@ -14,8 +15,8 @@ export function route(props: IRoute) {
       component: target,
       exact: true,
       ...props,
-      lightTheme: { ...baseLightTheme, ...(props.lightTheme || {}) },
-      darkTheme: { ...baseDarkTheme, ...(props.darkTheme || {}) },
+      lightTheme: mergeDeep({}, baseLightTheme, props.lightTheme),
+      darkTheme: mergeDeep({}, baseDarkTheme, props.darkTheme),
     });
     routes.sort((a, b) => (a.prio < b.prio ? -1 : a.prio > b.prio ? 1 : 0));
   };
