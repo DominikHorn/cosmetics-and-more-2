@@ -17,11 +17,12 @@ import MenuIcon from "@material-ui/icons/Menu";
 type SubpageRefs = { [path: string]: RefObject<any> };
 
 const useStyles = makeStyles((theme) => ({
-  stickToBottom: {
+  floatingActionButton: {
     /* stick to bottom of screen */
     position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
+    zIndex: 3,
   },
   tabIndicator: {
     height: "2px",
@@ -61,17 +62,17 @@ export const MobilePage = (props: IPageProps) => {
   }
 
   const getCoords = (ref: RefObject<any>) => {
-    var box = ref.current.getBoundingClientRect();
+    const box = ref.current.getBoundingClientRect();
 
-    var body = document.body;
-    var docEl = document.documentElement;
+    const body = document.body;
+    const docEl = document.documentElement;
 
-    var scrollPosY = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+    const scrollPosY = window.pageYOffset || docEl.scrollTop || body.scrollTop;
 
-    var clientTop = docEl.clientTop || body.clientTop || 0;
+    const clientTop = docEl.clientTop || body.clientTop || 0;
 
-    var top = box.top + scrollPosY - clientTop;
-    var bottom = top + box.height;
+    const top = box.top + scrollPosY - clientTop;
+    const bottom = top + box.height;
 
     return { top: top, bottom: bottom };
   };
@@ -79,7 +80,8 @@ export const MobilePage = (props: IPageProps) => {
   const isInViewport = (ref: RefObject<any>) => {
     if (!ref || !ref.current) return false;
     const coords = getCoords(ref);
-    return coords.bottom > 0 && coords.top <= window.innerHeight;
+    const scrollPosY = window.pageYOffset;
+    return scrollPosY < coords.bottom && scrollPosY >= coords.top;
   };
 
   // find currently visible page (if multiple are visible, use topmost page)
@@ -94,6 +96,8 @@ export const MobilePage = (props: IPageProps) => {
       behavior: "smooth",
     });
 
+  // Register handler after first render to ensure that we scroll to correct
+  // position if directly jumping to subpage
   useEffect(
     () => window.addEventListener("load", () => scrollTo(currentRoute)),
     []
@@ -118,7 +122,7 @@ export const MobilePage = (props: IPageProps) => {
       ))}
 
       <Fab
-        className={classes.stickToBottom}
+        className={classes.floatingActionButton}
         color="primary"
         onClick={() => setDrawerOpen(!drawerOpen)}
       >
