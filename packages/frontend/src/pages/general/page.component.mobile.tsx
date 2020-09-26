@@ -9,6 +9,7 @@ import {
   SwipeableDrawer,
   makeStyles,
   Typography,
+  useTheme,
 } from "@material-ui/core";
 import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
@@ -39,14 +40,12 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 2,
   },
-  subpage: {
-    marginBottom: theme.spacing(4),
-  },
 }));
 
 let subpageRefs: SubpageRefs;
 export const MobilePage = (props: IPageProps) => {
   const classes = useStyles(props);
+  const theme = useTheme();
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
@@ -112,7 +111,11 @@ export const MobilePage = (props: IPageProps) => {
   return (
     <>
       {routes.map((r, i) => (
-        <div key={i} ref={subpageRefs[r.path]} className={classes.subpage}>
+        <div
+          key={i}
+          ref={subpageRefs[r.path]}
+          style={{ marginBottom: i < routes.length - 1 ? theme.spacing(4) : 0 }}
+        >
           <Typography variant="h2" className={classes.pageTitle}>
             {r.displayName}
           </Typography>
