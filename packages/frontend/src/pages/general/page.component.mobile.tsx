@@ -32,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     backgroundColor: theme.palette.primary.main,
     borderBottom: `2px solid ${theme.palette.secondary.main}`,
+
+    // Stick to top & always in front
+    position: "sticky",
+    top: 0,
+    zIndex: 2,
   },
   subpage: {
     marginBottom: theme.spacing(4),
