@@ -28,12 +28,12 @@ export const HomeContent = () => {
   return (
     <Grid container spacing={2} alignItems={"center"}>
       {!xs && (
-        <Grid item xs={12} sm={5} className={classes.image}>
+        <Grid item xs={12} sm={5} md={4} className={classes.image}>
           <img src={"images/home/profile_low.png"} width={"75%"} />
         </Grid>
       )}
 
-      <Grid item xs={12} sm={7}>
+      <Grid item xs={12} sm={7} md={8}>
         <Typography variant="h3" className={classes.title}>
           {"Herzlich Willkommen bei Cosmetics and More"}
         </Typography>
@@ -49,11 +49,11 @@ export const HomeContent = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} sm={5}>
+      <Grid item xs={12} sm={5} md={4}>
         <img src={"images/home/wellness_low.jpg"} width={"100%"} />
       </Grid>
 
-      <Grid item xs={12} sm={7}>
+      <Grid item xs={12} sm={7} md={8}>
         <Typography variant="h3" className={classes.title}>
           {"Kosmetik"}
         </Typography>
@@ -66,11 +66,11 @@ export const HomeContent = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} sm={5}>
+      <Grid item xs={12} sm={5} md={4}>
         <img src={"images/home/kaemmen_low.jpg"} width={"100%"} />
       </Grid>
 
-      <Grid item xs={12} sm={7}>
+      <Grid item xs={12} sm={7} md={8}>
         <Typography variant="h3" className={classes.title}>
           {"Friseur"}
         </Typography>
