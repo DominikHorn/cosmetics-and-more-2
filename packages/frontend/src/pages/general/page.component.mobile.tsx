@@ -42,12 +42,58 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const FloatingActionButton = (
+  props: IPageProps & { scrollTo: (r: IRoute) => void; currentRoute: IRoute }
+) => {
+  const classes = useStyles(props);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  const iOS =
+    (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  return (
+    <>
+      <Fab
+        className={classes.floatingActionButton}
+        color="primary"
+        onClick={() => setDrawerOpen(!drawerOpen)}
+      >
+        <MenuIcon />
+      </Fab>
+
+      <SwipeableDrawer
+        anchor={"right"}
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        onOpen={() => setDrawerOpen(true)}
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+      >
+        <List>
+          {routes.map((r, i) => (
+            <ListItem
+              key={i}
+              alignItems={"center"}
+              selected={props.currentRoute.path == r.path}
+              onClick={() => {
+                props.scrollTo(r);
+                setDrawerOpen(false);
+              }}
+            >
+              <ListItemIcon>{r.icon}</ListItemIcon>
+              <ListItemText>{r.displayName}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
+      </SwipeableDrawer>
+    </>
+  );
+};
+
 let subpageRefs: SubpageRefs;
 export const MobilePage = (props: IPageProps) => {
   const classes = useStyles(props);
   const theme = useTheme();
-
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   // make sure component is redrawn when view scrolls
   // (otherwise route url can not correctly update)
@@ -105,9 +151,6 @@ export const MobilePage = (props: IPageProps) => {
   // make sure currentPath & visible components
   useEffect(() => props.navigateTo(currentRoute), [currentRoute]);
 
-  const iOS =
-    (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-
   return (
     <>
       {routes.map((r, i) => (
@@ -124,39 +167,11 @@ export const MobilePage = (props: IPageProps) => {
         </div>
       ))}
 
-      <Fab
-        className={classes.floatingActionButton}
-        color="primary"
-        onClick={() => setDrawerOpen(!drawerOpen)}
-      >
-        <MenuIcon />
-      </Fab>
-
-      <SwipeableDrawer
-        anchor={"right"}
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        onOpen={() => setDrawerOpen(true)}
-        disableBackdropTransition={!iOS}
-        disableDiscovery={iOS}
-      >
-        <List>
-          {routes.map((r, i) => (
-            <ListItem
-              key={i}
-              alignItems={"center"}
-              selected={currentRoute.path == r.path}
-              onClick={() => {
-                scrollTo(r);
-                setDrawerOpen(false);
-              }}
-            >
-              <ListItemIcon>{r.icon}</ListItemIcon>
-              <ListItemText>{r.displayName}</ListItemText>
-            </ListItem>
-          ))}
-        </List>
-      </SwipeableDrawer>
+      <FloatingActionButton
+        {...props}
+        scrollTo={scrollTo}
+        currentRoute={currentRoute}
+      />
     </>
   );
 };
