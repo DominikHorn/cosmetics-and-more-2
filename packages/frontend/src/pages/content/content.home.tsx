@@ -15,8 +15,16 @@ const useStyles = makeStyles((theme) => ({
   profileImageContainer: {
     textAlign: "center",
   },
+  imageContainer: {
+    height: "100%",
+    maxHeight: "max(25vh, 200px)",
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   description: {
-    textAlign: "justify",
+    margin: theme.spacing(1),
   },
 }));
 
@@ -60,7 +68,13 @@ export const HomeContent = () => {
       </Grid>
 
       <Grid item xs={12} sm={5} md={4}>
-        <img src={"images/home/wellness_low.jpg"} width={"100%"} />
+        <div className={classes.imageContainer}>
+          <img
+            src={"images/home/wellness_low.jpg"}
+            width={"100%"}
+            height={"100%"}
+          />
+        </div>
       </Grid>
 
       <Grid item xs={12} sm={7} md={8}>
@@ -77,7 +91,13 @@ export const HomeContent = () => {
       </Grid>
 
       <Grid item xs={12} sm={5} md={4}>
-        <img src={"images/home/kaemmen_low.jpg"} width={"100%"} />
+        <div className={classes.imageContainer}>
+          <img
+            src={"images/home/kaemmen_low.jpg"}
+            width={"100%"}
+            height={"100%"}
+          />
+        </div>
       </Grid>
 
       <Grid item xs={12} sm={7} md={8}>
