@@ -1,15 +1,7 @@
 import { ThemeOptions } from "@material-ui/core";
 import { blueGrey, deepPurple, lime, teal } from "@material-ui/core/colors";
 
-export const lightTheme: ThemeOptions = {
-  palette: {
-    primary: teal,
-    secondary: lime,
-    background: {
-      default: "#fff",
-    },
-    type: "light",
-  },
+export const baseTheme: ThemeOptions = {
   typography: {
     h2: {
       fontSize: "2rem",
@@ -33,8 +25,20 @@ export const lightTheme: ThemeOptions = {
   },
 };
 
-export const darkTheme: ThemeOptions = {
-  ...lightTheme,
+export const baseLightTheme: ThemeOptions = {
+  ...baseTheme,
+  palette: {
+    primary: teal,
+    secondary: lime,
+    background: {
+      default: "#fff",
+    },
+    type: "light",
+  },
+};
+
+export const baseDarkTheme: ThemeOptions = {
+  ...baseTheme,
   palette: {
     primary: deepPurple,
     secondary: blueGrey,
