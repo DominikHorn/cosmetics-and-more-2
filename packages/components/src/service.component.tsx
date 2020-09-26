@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: "100%",
-    maxHeight: "200px", // must be the same as imageItem maxHeight
+    maxHeight: "200px",
     objectFit: "cover",
   },
   textRight: {

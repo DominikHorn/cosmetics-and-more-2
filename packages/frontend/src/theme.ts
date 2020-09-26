@@ -6,7 +6,7 @@ export const lightTheme: ThemeOptions = {
     primary: teal,
     secondary: lime,
     background: {
-      default: "#f5f5f5",
+      default: "#fff",
     },
     type: "light",
   },

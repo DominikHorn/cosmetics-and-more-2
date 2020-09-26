@@ -6,7 +6,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Paper,
   SwipeableDrawer,
   makeStyles,
   Typography,
@@ -29,8 +28,13 @@ const useStyles = makeStyles((theme) => ({
   },
   pageTitle: {
     textAlign: "center",
-    marginTop: theme.spacing(12),
-    marginBottom: theme.spacing(2),
+    padding: theme.spacing(1),
+    color: "#fff",
+    backgroundColor: theme.palette.primary.main,
+    borderBottom: `2px solid ${theme.palette.secondary.main}`,
+  },
+  subpage: {
+    marginBottom: theme.spacing(4),
   },
 }));
 
@@ -81,16 +85,12 @@ export const MobilePage = (props: IPageProps) => {
   return (
     <>
       {routes.map((r, i) => (
-        <div key={i} ref={subpageRefs[r.path]}>
-          {i > 0 && (
-            <Typography variant="h2" className={classes.pageTitle}>
-              {r.displayName}
-            </Typography>
-          )}
+        <div key={i} ref={subpageRefs[r.path]} className={classes.subpage}>
+          <Typography variant="h2" className={classes.pageTitle}>
+            {r.displayName}
+          </Typography>
 
-          <Paper elevation={0}>
-            {React.createElement(r.component as React.ComponentClass, {}, null)}
-          </Paper>
+          {React.createElement(r.component as React.ComponentClass, {}, null)}
         </div>
       ))}
 
