@@ -80,7 +80,7 @@ export const MobilePage = (props: IPageProps) => {
     if (!ref || !ref.current) return false;
     const coords = getCoords(ref);
     const scrollPosY = window.pageYOffset;
-    return scrollPosY < coords.bottom && scrollPosY >= coords.top;
+    return scrollPosY < coords.bottom && scrollPosY >= coords.top - 5;
   };
 
   // find currently visible page (if multiple are visible, use topmost page)
@@ -147,7 +147,6 @@ export const MobilePage = (props: IPageProps) => {
               alignItems={"center"}
               selected={currentRoute.path == r.path}
               onClick={() => {
-                props.navigateTo(r);
                 scrollTo(r);
                 setDrawerOpen(false);
               }}
