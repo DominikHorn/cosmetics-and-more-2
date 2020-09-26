@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     padding: theme.spacing(1),
     color: "#fff",
-    backgroundColor: theme.palette.primary.main,
-    borderBottom: `2px solid ${theme.palette.secondary.main}`,
+    backgroundColor: `${theme.palette.primary.main}CC`,
+    backdropFilter: "blur(6px)",
 
     // Stick to top & always in front
     position: "sticky",
