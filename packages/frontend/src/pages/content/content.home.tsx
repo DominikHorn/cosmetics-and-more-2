@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     margin: theme.spacing(2),
   },
-  image: {
+  profileImageContainer: {
     textAlign: "center",
   },
   description: {
@@ -28,7 +28,13 @@ export const HomeContent = () => {
   return (
     <Grid container spacing={2} alignItems={"center"}>
       {!xs && (
-        <Grid item xs={12} sm={5} md={4} className={classes.image}>
+        <Grid
+          item
+          xs={12}
+          sm={5}
+          md={4}
+          className={classes.profileImageContainer}
+        >
           <img src={"images/home/profile_low.png"} width={"75%"} />
         </Grid>
       )}
@@ -38,7 +44,11 @@ export const HomeContent = () => {
           {"Herzlich Willkommen bei Cosmetics and More"}
         </Typography>
 
-        {xs && <img src={"images/home/profile_low.png"} width={"50%"} />}
+        {xs && (
+          <div className={classes.profileImageContainer}>
+            <img src={"images/home/profile_low.png"} width={"50%"} />
+          </div>
+        )}
 
         <Typography variant="body1" className={classes.description}>
           {`Hallo liebe Besucherin, Hallo lieber Besucher, mein Name ist Katarzyna Thurand und ich freue mich 
