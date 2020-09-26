@@ -7062,6 +7062,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-apple-mapkitjs@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/react-apple-mapkitjs/-/react-apple-mapkitjs-0.2.5.tgz#c7d1340e73a69adb0c15aae5baa9456c34c5ef16"
+  integrity sha512-aZs1aB5mL3UnKkvnQZ7Z1s3cN2WbxhPqogje2zFpoP109jm8BiUXnzfrnqcY65MO1V9y26XGITYeyUKRA3XOrA==
+
 react-dom@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
