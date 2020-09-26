@@ -48,7 +48,7 @@ export const HomeContent = () => {
       )}
 
       <Grid item xs={12} sm={7} md={8}>
-        <Typography variant="h3" className={classes.title}>
+        <Typography variant="h2" className={classes.title}>
           {"Herzlich Willkommen bei Cosmetics and More"}
         </Typography>
 

@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: "100%",
-    maxHeight: "200px", // must be the same as imageItem maxHeight
+    maxHeight: "200px",
     objectFit: "cover",
   },
   textRight: {
@@ -93,7 +93,7 @@ const ServiceVariant = (props: IServiceVariant) => {
       <Grid container item xs={8} spacing={0}>
         {props.title && (
           <Grid item>
-            <Typography variant={"body2"}>{props.title}</Typography>
+            <Typography variant={"body1"}>{props.title}</Typography>
           </Grid>
         )}
 
@@ -153,7 +153,7 @@ const Description = (props: IService) => {
   if (!props.description) return null;
   return (
     <Grid item xs={12} className={classes.descriptionItem}>
-      <Typography variant={"body2"}>{props.description}</Typography>
+      <Typography variant={"body1"}>{props.description}</Typography>
     </Grid>
   );
 };
