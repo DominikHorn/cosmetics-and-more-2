@@ -5,6 +5,7 @@ import { Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import { cosmeticServices, hairServices } from "./content";
 import { ServiceComponent } from "@cosmetics-and-more/components";
 import { DEFAULT_ANIMATION_DELAY } from "@cosmetics-and-more/types";
+import { blue, cyan } from "@material-ui/core/colors";
 
 const ServiceGrid = () => {
   const theme = useTheme();
@@ -37,6 +38,12 @@ const ServiceGrid = () => {
   path: "/services",
   icon: <RoomServiceIcon />,
   prio: 2,
+  lightTheme: {
+    palette: {
+      primary: blue,
+      secondary: cyan,
+    },
+  },
 })
 export class ServicesPage extends React.PureComponent {
   render() {

@@ -9,6 +9,7 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { galleryImageURLs } from "./content";
+import { deepPurple, purple } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   gridList: {
@@ -43,6 +44,12 @@ const ImageGrid = () => {
   path: "/gallery",
   icon: <PhotoLibraryIcon />,
   prio: 3,
+  lightTheme: {
+    palette: {
+      primary: purple,
+      secondary: deepPurple,
+    },
+  },
 })
 export class GaleriePage extends React.PureComponent {
   render() {

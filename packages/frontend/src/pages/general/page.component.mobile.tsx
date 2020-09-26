@@ -51,7 +51,7 @@ export const MobilePage = (props: IPageProps) => {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   // make sure component is redrawn when view scrolls
-  // (otherwise floating button does not work)
+  // (otherwise route url can not correctly update)
   useScrollPosition(10);
 
   if (!subpageRefs) {
