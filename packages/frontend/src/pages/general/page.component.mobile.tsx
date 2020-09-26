@@ -129,12 +129,6 @@ export const MobilePage = (props: IPageProps) => {
     return scrollPosY < coords.bottom && scrollPosY >= coords.top - 5;
   };
 
-  // find currently visible page (if multiple are visible, use topmost page)
-  const currentRoute =
-    routes.find((r) => isInViewport(subpageRefs[r.path])) ||
-    routes[props.routeIndex] ||
-    routes[0];
-
   const scrollTo = (route: IRoute) =>
     window.scrollTo({
       top: getCoords(subpageRefs[route.path]).top,
@@ -143,13 +137,16 @@ export const MobilePage = (props: IPageProps) => {
 
   // Register handler after first render to ensure that we scroll to correct
   // position if directly jumping to subpage
+  const currentRoute = routes[props.routeIndex] || routes[0];
   useEffect(
     () => window.addEventListener("load", () => scrollTo(currentRoute)),
     []
   );
 
   // make sure currentPath & visible components
-  useEffect(() => props.navigateTo(currentRoute), [currentRoute]);
+  const visibleRoute =
+    routes.find((r) => isInViewport(subpageRefs[r.path])) || currentRoute;
+  useEffect(() => props.navigateTo(visibleRoute), [visibleRoute]);
 
   return (
     <>
