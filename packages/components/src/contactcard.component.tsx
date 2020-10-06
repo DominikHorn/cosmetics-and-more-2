@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
+import { MapComponent } from "./map.component";
 
 export interface IContactCardComponentProps {
   readonly avatarUrl: string;
@@ -16,7 +17,6 @@ export interface IContactCardComponentProps {
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
-    maxWidth: "450px",
   },
   avatar: {
     width: theme.spacing(16),
@@ -42,7 +42,7 @@ export const ContactCardComponent = (props: IContactCardComponentProps) => {
 
       <Divider className={classes.divider} />
 
-      <Grid container spacing={2} alignItems={"center"}>
+      <Grid container spacing={2} alignItems={"center"} justify={"center"}>
         <Grid item>
           <Avatar
             alt={props.avatarAlt || "Avatar"}
@@ -63,6 +63,10 @@ export const ContactCardComponent = (props: IContactCardComponentProps) => {
           </Typography>
         </Grid>
       </Grid>
+
+      <Divider className={classes.divider} />
+
+      <MapComponent />
     </Paper>
   );
 };

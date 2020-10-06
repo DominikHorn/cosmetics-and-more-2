@@ -2,11 +2,7 @@ import React from "react";
 import { indigo, lightBlue } from "@material-ui/core/colors";
 import { route } from "../routing";
 import PhoneIcon from "@material-ui/icons/Phone";
-import {
-  ContactCardComponent,
-  MapCardComponent,
-} from "@cosmetics-and-more/components";
-import { Grid } from "@material-ui/core";
+import { ContactCardComponent } from "@cosmetics-and-more/components";
 
 @route({
   displayName: "Kontakt",
@@ -22,16 +18,6 @@ import { Grid } from "@material-ui/core";
 })
 export class ContactPage extends React.PureComponent {
   render() {
-    return (
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <ContactCardComponent avatarUrl={"images//contact/profile.png"} />
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <MapCardComponent />
-        </Grid>
-      </Grid>
-    );
+    return <ContactCardComponent avatarUrl={"images/contact/profile.png"} />;
   }
 }
