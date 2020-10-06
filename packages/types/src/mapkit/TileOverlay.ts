@@ -1,1 +1,0 @@
-export type TileOverlay = {}; // TODO;

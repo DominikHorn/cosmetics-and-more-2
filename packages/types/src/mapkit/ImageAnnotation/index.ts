@@ -1,1 +1,0 @@
-export { ImageAnnotation } from "./ImageAnnotation";

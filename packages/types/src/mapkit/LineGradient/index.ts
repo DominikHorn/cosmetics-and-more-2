@@ -1,1 +1,0 @@
-export { LineGradient } from "./LineGradient";
