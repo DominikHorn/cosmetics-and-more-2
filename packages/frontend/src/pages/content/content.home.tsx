@@ -8,13 +8,14 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  rootContainer: {
-    // TODO: equal padding on both sides
-    paddingRight: theme.spacing(2),
-  },
   title: {
     textAlign: "center",
     margin: theme.spacing(2),
+  },
+  tierversucheLogo: {
+    width: "100%",
+    textAlign: "center",
+    padding: theme.spacing(2),
   },
   profileImageContainer: {
     textAlign: "center",
@@ -37,7 +38,14 @@ export const HomeContent = () => {
       container
       spacing={xs ? 0 : 2}
       alignItems={"center"}
-      className={classes.rootContainer}
+      style={
+        xs
+          ? {}
+          : {
+              paddingRight: theme.spacing(2),
+              paddingLeft: theme.spacing(2),
+            }
+      }
     >
       {!xs && (
         <Grid
@@ -45,20 +53,21 @@ export const HomeContent = () => {
           xs={12}
           sm={5}
           md={4}
+          lg={3}
           className={classes.profileImageContainer}
         >
           <img src={"images/home/profile_low.png"} width={"75%"} />
         </Grid>
       )}
 
-      <Grid item xs={12} sm={7} md={8}>
+      <Grid item xs={12} sm={7} md={8} lg={9}>
         <Typography variant="h2" className={classes.title}>
           {"Herzlich Willkommen bei Cosmetics and More"}
         </Typography>
 
         {xs && (
           <div className={classes.profileImageContainer}>
-            <img src={"images/home/profile_low.png"} width={"50%"} />
+            <img src={"images/home/profile_low.png"} width={"100%"} />
           </div>
         )}
 
@@ -74,57 +83,73 @@ export const HomeContent = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} sm={5} md={4}>
+      <Grid item xs={12} sm={5} md={4} lg={3}>
         <div className={classes.imageContainer}>
           <img
             src={"images/home/wellness_low.jpg"}
-            width={"75%"}
+            width={"100%"}
             height={"auto"}
           />
         </div>
       </Grid>
 
-      <Grid item xs={12} sm={7} md={8}>
-        <Typography variant="h3" className={classes.title}>
-          {"Kosmetik"}
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          Gönnen Sie sich eine wohlverdiente Auszeit für Körper und Seele. Von
-          Massagen über Maniküre und Gesichtsbehandlungen bis hin zu Pediküre
-          biete ich Ihnen die passende, persönliche Behandlung, die Ihr Körper
-          verdient. Jahrelange Erfahrung machen mich zu der perfekt
-          qualifizierten Person für ihre kosmetischen Bedürfnisse. Vereinbaren
-          Sie Ihren nächsten Wohlfühltermin gleich heute!
-        </Typography>
+      <Grid container item xs={12} sm={7} md={8} lg={9}>
+        <Grid item xs={12}>
+          <Typography variant="h3" className={classes.title}>
+            {"Kosmetik"}
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="body1" className={classes.description}>
+            Gönnen Sie sich eine wohlverdiente Auszeit für Körper und Seele. Von
+            Massagen über Maniküre und Gesichtsbehandlungen bis hin zu Pediküre
+            biete ich Ihnen die passende, persönliche Behandlung, die Ihr Körper
+            verdient. Jahrelange Erfahrung machen mich zu der perfekt
+            qualifizierten Person für ihre kosmetischen Bedürfnisse. Vereinbaren
+            Sie Ihren nächsten Wohlfühltermin gleich heute!
+          </Typography>
+        </Grid>
 
-        <Typography variant="body1" className={classes.description}>
-          In meinem Salon verwende ich hochwertige Kosmetikprodukte von HAGINA
-          Cosmetics, welche unter Zusatz natürlicher Inhaltsstoffe ohne
-          Tierversuche, nach den Richtlinien des deutschen Tierverbundes e.V.,
-          im bayerischen Iffeldorf hergestellt und abgefüllt werden.
-        </Typography>
+        <Grid
+          container
+          item
+          lg={3}
+          md={5}
+          xs={12}
+          justify={"center"}
+          alignItems={"center"}
+        >
+          <Grid item sm={12} className={classes.tierversucheLogo}>
+            <img
+              src={"images/home/tierversuche.png"}
+              alt={"Hase gegen Tierversuche Logo"}
+              width={"100%"}
+              height={"auto"}
+            />
+          </Grid>
+        </Grid>
 
-        <div style={{ width: "100%", textAlign: "center" }}>
-          <img
-            src={"images/home/tierversuche.png"}
-            alt={"Hase gegen Tierversuche Logo"}
-            width={"250px"}
-            height={"auto"}
-          />
-        </div>
+        <Grid item lg={9} md={7} xs={12}>
+          <Typography variant="body1" className={classes.description}>
+            In meinem Salon verwende ich hochwertige Kosmetikprodukte von HAGINA
+            Cosmetics, welche unter Zusatz natürlicher Inhaltsstoffe ohne
+            Tierversuche, nach den Richtlinien des deutschen Tierverbundes e.V.,
+            im bayerischen Iffeldorf hergestellt und abgefüllt werden.
+          </Typography>
+        </Grid>
       </Grid>
 
-      <Grid item xs={12} sm={5} md={4}>
+      <Grid item xs={12} sm={5} md={4} lg={3}>
         <div className={classes.imageContainer}>
           <img
             src={"images/home/kaemmen_low.jpg"}
-            width={"75%"}
+            width={"100%"}
             height={"auto"}
           />
         </div>
       </Grid>
 
-      <Grid item xs={12} sm={7} md={8}>
+      <Grid item xs={12} sm={7} md={8} lg={9}>
         <Typography variant="h3" className={classes.title}>
           {"Friseur"}
         </Typography>
