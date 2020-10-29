@@ -74,7 +74,7 @@ export const cosmeticServices: IService[] = [
   },
   {
     title: "Sonstiges",
-    imageURL: "images/services/utensilien_low.jpg",
+    imageURL: "images/services/augenbrauen.jpg",
     variants: [
       { title: "Augenbrauenkorrektur", price: "6" },
       { title: "Augenbrauen Färben", price: "6" },
@@ -86,7 +86,7 @@ export const cosmeticServices: IService[] = [
 export const hairServices: IService[] = [
   {
     title: "Damen - Frisur",
-    imageURL: "images/services/flechten_low.jpg",
+    imageURL: "images/services/kaemmen_low.jpg",
     variantsHeader: { priceColumn: "kurz / lang" },
     variants: [
       {
