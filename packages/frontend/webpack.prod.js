@@ -56,9 +56,6 @@ module.exports = {
       inject: "body",
     }),
     new CopyPlugin({
-      patterns: [{ from: "gh-pages", to: "./" }],
-    }),
-    new CopyPlugin({
       patterns: [{ from: "images", to: "images" }],
     }),
   ],
