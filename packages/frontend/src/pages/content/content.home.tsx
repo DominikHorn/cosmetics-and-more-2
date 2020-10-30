@@ -86,7 +86,7 @@ export const HomeContent = () => {
       <Grid item xs={12} sm={5} md={4} lg={3}>
         <div className={classes.imageContainer}>
           <img
-            src={"images/home/wellness_low.jpg"}
+            src={"images/home/entspannung_low.jpg"}
             width={"100%"}
             height={"auto"}
           />
