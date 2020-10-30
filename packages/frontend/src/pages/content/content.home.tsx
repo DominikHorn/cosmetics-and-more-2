@@ -67,7 +67,7 @@ export const HomeContent = () => {
 
         {xs && (
           <div className={classes.profileImageContainer}>
-            <img src={"images/home/profile_low.png"} width={"100%"} />
+            <img src={"images/home/profile_low.png"} width={"75%"} />
           </div>
         )}
 
