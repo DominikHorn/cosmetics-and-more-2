@@ -1,4 +1,3 @@
-import { CssBaseline } from "@material-ui/core";
 import React from "react";
 import { hot } from "react-hot-loader";
 
@@ -8,7 +7,6 @@ import { PageComponent } from "./pages";
 
 const AppComponent = (): React.ReactElement => (
   <Router>
-    <CssBaseline />
     <ErrorBoundaryComponent>
       <PageComponent />
     </ErrorBoundaryComponent>

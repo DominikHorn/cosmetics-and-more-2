@@ -30,9 +30,6 @@ export const baseLightTheme: ThemeOptions = {
   palette: {
     primary: teal,
     secondary: lime,
-    background: {
-      default: "#fff",
-    },
     type: "light",
   },
 };
@@ -42,9 +39,6 @@ export const baseDarkTheme: ThemeOptions = {
   palette: {
     primary: deepPurple,
     secondary: blueGrey,
-    background: {
-      default: "#212121",
-    },
     type: "dark",
   },
 };
