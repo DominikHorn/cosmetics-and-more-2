@@ -129,7 +129,7 @@ export const HomeContent = () => {
           </Grid>
         </Grid>
 
-        <Grid item lg={9} md={7} xs={12}>
+        <Grid container item lg={9} md={7} xs={12} alignItems={"center"}>
           <Typography variant="body1" className={classes.description}>
             In meinem Salon verwende ich hochwertige Kosmetikprodukte von HAGINA
             Cosmetics, welche unter Zusatz natürlicher Inhaltsstoffe ohne
