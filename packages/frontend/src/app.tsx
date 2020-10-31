@@ -6,6 +6,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ErrorBoundaryComponent } from "@cosmetics-and-more/components";
 import { PageComponent } from "./pages";
 
+// TODO; debug lag spikes on page switch :(
+
 const AppComponent = (): React.ReactElement => (
   <Router>
     <CssBaseline />
