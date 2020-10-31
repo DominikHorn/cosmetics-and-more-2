@@ -2,6 +2,7 @@ import React from "react";
 import { route } from "../routing";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import {
+  Fade,
   GridList,
   GridListTile,
   makeStyles,
@@ -10,6 +11,10 @@ import {
 } from "@material-ui/core";
 import { galleryImageURLs } from "./content";
 import { deepPurple, purple } from "@material-ui/core/colors";
+import {
+  DEFAULT_ANIMATION_DELAY,
+  DEFAULT_ANIMATION_DURATION,
+} from "@cosmetics-and-more/types";
 
 const useStyles = makeStyles({
   gridList: {
@@ -31,9 +36,18 @@ const ImageGrid = () => {
       cols={sm || xs ? 2 : 3}
     >
       {galleryImageURLs.map((url, i) => (
-        <GridListTile key={i} cols={1}>
-          <img src={url} />
-        </GridListTile>
+        <Fade
+          key={i}
+          in={true}
+          timeout={DEFAULT_ANIMATION_DURATION}
+          style={{
+            transitionDelay: `${DEFAULT_ANIMATION_DELAY * (i % 3)}ms`,
+          }}
+        >
+          <GridListTile cols={1}>
+            <img src={url} />
+          </GridListTile>
+        </Fade>
       ))}
     </GridList>
   );
