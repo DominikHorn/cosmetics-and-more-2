@@ -44,6 +44,12 @@ const ServiceGrid = () => {
       secondary: cyan,
     },
   },
+  darkTheme: {
+    palette: {
+      primary: blue,
+      secondary: cyan,
+    },
+  },
 })
 export class ServicesPage extends React.PureComponent {
   render() {

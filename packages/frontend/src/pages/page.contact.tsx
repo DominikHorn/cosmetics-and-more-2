@@ -1,5 +1,5 @@
 import React from "react";
-import { indigo, lightBlue } from "@material-ui/core/colors";
+import { blueGrey, grey, indigo, lightBlue } from "@material-ui/core/colors";
 import { route } from "../routing";
 import PhoneIcon from "@material-ui/icons/Phone";
 import { ContactCardComponent } from "@cosmetics-and-more/components";
@@ -13,6 +13,12 @@ import { ContactCardComponent } from "@cosmetics-and-more/components";
     palette: {
       primary: indigo,
       secondary: lightBlue,
+    },
+  },
+  darkTheme: {
+    palette: {
+      primary: blueGrey,
+      secondary: grey,
     },
   },
 })

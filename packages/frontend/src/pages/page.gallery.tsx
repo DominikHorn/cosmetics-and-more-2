@@ -12,7 +12,7 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { galleryImageURLs } from "./content";
-import { deepPurple, purple } from "@material-ui/core/colors";
+import { deepPurple, grey, purple } from "@material-ui/core/colors";
 import {
   DEFAULT_ANIMATION_DELAY,
   DEFAULT_ANIMATION_DURATION,
@@ -103,6 +103,12 @@ interface IState {
     palette: {
       primary: purple,
       secondary: deepPurple,
+    },
+  },
+  darkTheme: {
+    palette: {
+      primary: deepPurple,
+      secondary: grey,
     },
   },
 })
