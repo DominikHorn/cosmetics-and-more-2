@@ -50,6 +50,7 @@ module.exports = {
       "react-dom": "@hot-loader/react-dom",
     },
   },
+  optimization: { moduleIds: "named", usedExports: true },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src/index.html"),
@@ -68,7 +69,7 @@ module.exports = {
     disableHostCheck: true,
     historyApiFallback: true,
     watchOptions: {
-      ignored: /node_modules/,
+      ignored: ["node_modules/**", "packages/**/*.ts", "packages/**/*.tsx"],
     },
     headers: {
       "Access-Control-Allow-Origin": "*",
