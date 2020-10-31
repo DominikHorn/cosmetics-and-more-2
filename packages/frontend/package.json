@@ -1,6 +1,7 @@
 {
   "name": "@cosmetics-and-more/frontend",
   "version": "1.0.0",
+  "sideEffects": true,
   "scripts": {
     "clean": "rimraf bundle/ dist/ tsconfig.tsbuildinfo",
     "purge": "rimraf node_modules",
@@ -8,7 +9,6 @@
     "build:profile": "webpack --color --config webpack.prod.js --profile --json > compilation-stats.json",
     "frontend:serve": "webpack-dev-server --color --hot --progress --config webpack.dev.js"
   },
-  "sideEffects": false,
   "devDependencies": {
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
