@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
@@ -59,7 +58,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: "images", to: "images" }],
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     hot: true,
