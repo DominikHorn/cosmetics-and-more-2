@@ -4,6 +4,7 @@
   "description": "Website for cosmetics-and-more, a local cosmetics & hair salon",
   "author": "Dominik Horn <dominik.horn@tum.de>",
   "private": true,
+  "sideEffects": false,
   "workspaces": [
     "packages/*"
   ],
