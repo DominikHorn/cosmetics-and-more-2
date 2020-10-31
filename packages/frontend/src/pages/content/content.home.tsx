@@ -9,6 +9,48 @@ import {
   Paper,
 } from "@material-ui/core";
 
+const welcomeImage = "images/home/profile_low.png";
+const welcomeImageAlt = "Bild von Katarzyna Thurand";
+const welcomeTitle = "Herzlich Willkommen bei Cosmetics and More";
+const welcomeText = `
+    Hallo liebe Besucherin, Hallo lieber Besucher, mein Name ist
+    Katarzyna Thurand und ich freue mich Sie auf der Webseite meines
+    Kosmetik- und Frisörstudios begrüßen zu dürfen. Schön, dass Sie da
+    sind. Auf diesen Seiten können Sie sich bequem in meinem Studio
+    umsehen sowie alle Informationen zu meinem aktuellen
+    Leistungsangebot finden. Wenn Sie einen Termin vereinbaren wollen
+    kontaktieren Sie mich gerne telefonisch oder per Email. Ich freue
+    mich Sie schon bald als KundIn begrüßen zu dürfen!`.trim();
+
+const cosmeticImage = "images/home/entspannung_low.jpg";
+const cosmeticImageAlt = "Symbol der Entspannung";
+const cosmeticTitle = "Kosmetik";
+const cosmeticText = `
+    Gönnen Sie sich eine wohlverdiente Auszeit für Körper und Seele.
+    Von Massagen über Maniküre und Gesichtsbehandlungen bis hin zu
+    Pediküre biete ich Ihnen die passende, persönliche Behandlung,
+    die Ihr Körper verdient. Jahrelange Erfahrung machen mich zu der
+    perfekt qualifizierten Person für ihre kosmetischen Bedürfnisse.
+    Vereinbaren Sie Ihren nächsten Wohlfühltermin gleich heute!`.trim();
+
+const tierversucheImage = "images/home/tierversuche.png";
+const tierversucheImageAlt = "Hase gegen Tierversuche Logo";
+const tierversucheText = `
+    In meinem Salon verwende ich hochwertige Kosmetikprodukte von
+    HAGINA Cosmetics, welche unter Zusatz natürlicher Inhaltsstoffe
+    ohne Tierversuche, nach den Richtlinien des deutschen
+    Tierverbundes e.V., im bayerischen Iffeldorf hergestellt und
+    abgefüllt werden.`.trim();
+
+const friseurImage = "images/home/kaemmen_low.jpg";
+const friseurImageAlt = "Frau beim Haarstyling";
+const friseurTitle = "Friseur";
+const friseurText = `
+    Erfüllen Sie sich den Wunsch ihrer Traumfrisur! Ob Haarschnitt,
+    Tönung, Färbung, Strähnen oder Brautfrisur inklusive Make-up, über
+    zwanzig Jahre Berufserfahrung garantieren eine Friseur genau nach
+    Ihren Ansprüchen.`.trim();
+
 const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: "center",
@@ -19,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     padding: theme.spacing(2),
   },
-  profileImageContainer: {
+  welcomeImageContainer: {
     textAlign: "center",
   },
   imageContainer: {
@@ -60,7 +102,7 @@ export const HomeContent = () => {
             sm={5}
             md={4}
             lg={3}
-            className={classes.profileImageContainer}
+            className={classes.welcomeImageContainer}
           >
             <Slide
               direction={"right"}
@@ -69,7 +111,7 @@ export const HomeContent = () => {
               unmountOnExit
               timeout={500}
             >
-              <img src={"images/home/profile_low.png"} width={"75%"} />
+              <img src={welcomeImage} width={"75%"} alt={welcomeImageAlt} />
             </Slide>
           </Grid>
         )}
@@ -83,7 +125,7 @@ export const HomeContent = () => {
             timeout={500}
           >
             <Typography variant="h2" className={classes.title}>
-              {"Herzlich Willkommen bei Cosmetics and More"}
+              {welcomeTitle}
             </Typography>
           </Slide>
 
@@ -95,8 +137,8 @@ export const HomeContent = () => {
               unmountOnExit
               timeout={500}
             >
-              <div className={classes.profileImageContainer}>
-                <img src={"images/home/profile_low.png"} width={"75%"} />
+              <div className={classes.welcomeImageContainer}>
+                <img src={welcomeImage} width={"75%"} alt={welcomeImageAlt} />
               </div>
             </Slide>
           )}
@@ -109,14 +151,7 @@ export const HomeContent = () => {
             timeout={600}
           >
             <Typography variant="body1" className={classes.description}>
-              Hallo liebe Besucherin, Hallo lieber Besucher, mein Name ist
-              Katarzyna Thurand und ich freue mich Sie auf der Webseite meines
-              Kosmetik- und Frisörstudios begrüßen zu dürfen. Schön, dass Sie da
-              sind. Auf diesen Seiten können Sie sich bequem in meinem Studio
-              umsehen sowie alle Informationen zu meinem aktuellen
-              Leistungsangebot finden. Wenn Sie einen Termin vereinbaren wollen
-              kontaktieren Sie mich gerne telefonisch oder per Email. Ich freue
-              mich Sie schon bald als KundIn begrüßen zu dürfen!
+              {welcomeText}
             </Typography>
           </Slide>
         </Grid>
@@ -131,9 +166,10 @@ export const HomeContent = () => {
           >
             <div className={classes.imageContainer}>
               <img
-                src={"images/home/entspannung_low.jpg"}
+                src={cosmeticImage}
                 width={"100%"}
                 height={"auto"}
+                alt={cosmeticImageAlt}
               />
             </div>
           </Slide>
@@ -149,7 +185,7 @@ export const HomeContent = () => {
               timeout={700}
             >
               <Typography variant="h3" className={classes.title}>
-                {"Kosmetik"}
+                {cosmeticTitle}
               </Typography>
             </Slide>
           </Grid>
@@ -162,12 +198,7 @@ export const HomeContent = () => {
               timeout={800}
             >
               <Typography variant="body1" className={classes.description}>
-                Gönnen Sie sich eine wohlverdiente Auszeit für Körper und Seele.
-                Von Massagen über Maniküre und Gesichtsbehandlungen bis hin zu
-                Pediküre biete ich Ihnen die passende, persönliche Behandlung,
-                die Ihr Körper verdient. Jahrelange Erfahrung machen mich zu der
-                perfekt qualifizierten Person für ihre kosmetischen Bedürfnisse.
-                Vereinbaren Sie Ihren nächsten Wohlfühltermin gleich heute!
+                {cosmeticText}
               </Typography>
             </Slide>
           </Grid>
@@ -190,8 +221,8 @@ export const HomeContent = () => {
                 timeout={900}
               >
                 <img
-                  src={"images/home/tierversuche.png"}
-                  alt={"Hase gegen Tierversuche Logo"}
+                  src={tierversucheImage}
+                  alt={tierversucheImageAlt}
                   width={"100%"}
                   height={"auto"}
                 />
@@ -208,11 +239,7 @@ export const HomeContent = () => {
               timeout={1000}
             >
               <Typography variant="body1" className={classes.description}>
-                In meinem Salon verwende ich hochwertige Kosmetikprodukte von
-                HAGINA Cosmetics, welche unter Zusatz natürlicher Inhaltsstoffe
-                ohne Tierversuche, nach den Richtlinien des deutschen
-                Tierverbundes e.V., im bayerischen Iffeldorf hergestellt und
-                abgefüllt werden.
+                {tierversucheText}
               </Typography>
             </Slide>
           </Grid>
@@ -228,7 +255,8 @@ export const HomeContent = () => {
           >
             <div className={classes.imageContainer}>
               <img
-                src={"images/home/kaemmen_low.jpg"}
+                src={friseurImage}
+                alt={friseurImageAlt}
                 width={"100%"}
                 height={"auto"}
               />
@@ -245,7 +273,7 @@ export const HomeContent = () => {
             timeout={1100}
           >
             <Typography variant="h3" className={classes.title}>
-              {"Friseur"}
+              {friseurTitle}
             </Typography>
           </Slide>
 
@@ -257,10 +285,7 @@ export const HomeContent = () => {
             timeout={1200}
           >
             <Typography variant="body1" className={classes.description}>
-              Erfüllen Sie sich den Wunsch ihrer Traumfrisur! Ob Haarschnitt,
-              Tönung, Färbung, Strähnen oder Brautfrisur inklusive Make-up, über
-              zwanzig Jahre Berufserfahrung garantieren eine Friseur genau nach
-              Ihren Ansprüchen.
+              {friseurText}
             </Typography>
           </Slide>
         </Grid>
