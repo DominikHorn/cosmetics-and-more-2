@@ -59,7 +59,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: "images", to: "images" }],
     }),
-    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
