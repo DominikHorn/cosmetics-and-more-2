@@ -2,6 +2,8 @@ import React from "react";
 import { route } from "../routing";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import {
+  Dialog,
+  DialogContent,
   Fade,
   GridList,
   GridListTile,
@@ -23,7 +25,11 @@ const useStyles = makeStyles({
   },
 });
 
-const ImageGrid = () => {
+const ImageGrid = ({
+  setPreviewImageUrl,
+}: {
+  setPreviewImageUrl: (url: string) => void;
+}) => {
   const classes = useStyles();
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.down("xs"), { noSsr: true });
@@ -45,13 +51,48 @@ const ImageGrid = () => {
           }}
         >
           <GridListTile cols={1}>
-            <img src={url} />
+            <img src={url} onClick={() => setPreviewImageUrl(url)} />
           </GridListTile>
         </Fade>
       ))}
     </GridList>
   );
 };
+
+const DialogComponent = ({
+  dialogOpen,
+  setDialogOpen,
+  previewImageURL,
+}: {
+  dialogOpen: boolean;
+  setDialogOpen: (open: boolean) => void;
+  previewImageURL: string;
+}) => {
+  const theme = useTheme();
+
+  return (
+    <Dialog
+      open={dialogOpen}
+      maxWidth={"xl"}
+      onClose={() => setDialogOpen(false)}
+    >
+      <DialogContent style={{ padding: 0, overflow: "hidden" }}>
+        <img
+          src={previewImageURL}
+          style={{
+            maxHeight: `calc(100vh - ${theme.spacing(4 * 2)}px)`,
+            maxWidth: `calc(100vw - ${theme.spacing(4 * 2)}px)`,
+          }}
+        />
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+interface IState {
+  readonly previewImageURL: string;
+  readonly dialogOpen: boolean;
+}
 
 @route({
   displayName: "Galerie",
@@ -65,8 +106,29 @@ const ImageGrid = () => {
     },
   },
 })
-export class GaleriePage extends React.PureComponent {
+export class GaleriePage extends React.PureComponent<{}, IState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { previewImageURL: galleryImageURLs[0], dialogOpen: false };
+  }
+
   render() {
-    return <ImageGrid />;
+    const { previewImageURL, dialogOpen } = this.state;
+
+    return (
+      <>
+        <ImageGrid
+          setPreviewImageUrl={(previewImageURL) =>
+            this.setState({ previewImageURL, dialogOpen: true })
+          }
+        />
+
+        <DialogComponent
+          dialogOpen={dialogOpen}
+          setDialogOpen={(dialogOpen) => this.setState({ dialogOpen })}
+          previewImageURL={previewImageURL}
+        />
+      </>
+    );
   }
 }
