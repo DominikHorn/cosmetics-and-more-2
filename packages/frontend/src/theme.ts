@@ -39,6 +39,10 @@ export const baseDarkTheme: ThemeOptions = {
   palette: {
     primary: deepPurple,
     secondary: blueGrey,
+    background: {
+      default: "#101010",
+      paper: "#202020",
+    },
     type: "dark",
   },
 };
