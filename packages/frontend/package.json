@@ -7,7 +7,7 @@
     "purge": "rimraf node_modules",
     "build": "webpack --color --config webpack.prod.js",
     "build:profile": "webpack --color --config webpack.prod.js --profile --json > compilation-stats.json",
-    "frontend:serve": "webpack-dev-server --color --hot --progress --config webpack.dev.js"
+    "frontend:serve": "webpack serve --color --hot --progress --config webpack.dev.js"
   },
   "devDependencies": {
     "@types/react": "^16.9.55",
