@@ -12,7 +12,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COSMETICS_AND_MORE_FF552 }}'
-          projectId: cosmetics-and-more-ff552
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COSMETICS_AND_MORE_2 }}'
+          projectId: cosmetics-and-more-2
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

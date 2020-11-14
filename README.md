@@ -1,3 +1,3 @@
 # Firebase hosted development version
 
-https://cosmetics-and-more-ff552.web.app
+https://cosmetics-and-more-2.web.app

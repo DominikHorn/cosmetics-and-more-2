@@ -1,28 +1,33 @@
 {
   "name": "@cosmetics-and-more/frontend",
   "version": "1.0.0",
+  "sideEffects": true,
   "scripts": {
     "clean": "rimraf bundle/ dist/ tsconfig.tsbuildinfo",
     "purge": "rimraf node_modules",
     "build": "webpack --color --config webpack.prod.js",
-    "frontend:serve": "webpack-dev-server --color --hot --progress --config webpack.dev.js"
+    "build:profile": "webpack --color --config webpack.prod.js --profile --json > compilation-stats.json",
+    "frontend:serve": "webpack serve --color --hot --progress --config webpack.dev.js"
   },
   "devDependencies": {
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.6",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/smoothscroll-polyfill": "0.3.0"
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/smoothscroll-polyfill": "^0.3.1"
   },
   "dependencies": {
     "@cosmetics-and-more/components": "^1.0.0",
     "@cosmetics-and-more/types": "^1.0.0",
     "@cosmetics-and-more/utilities": "^1.0.0",
-    "@material-ui/core": "^4.9.11",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.50",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/pickers": "^3.2.10",
+    "@date-io/date-fns": "^1.3.13",
+    "date-fns": "^2.16.1",
     "@react-hook/window-scroll": "^1.3.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "smoothscroll-polyfill": "^0.4.4"
   }

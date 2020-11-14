@@ -48,9 +48,6 @@ module.exports = {
     symlinks: true,
   },
   plugins: [
-    new webpack.EnvironmentPlugin({
-      PUBLIC_URL: "/",
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src/index.html"),
       inject: "body",

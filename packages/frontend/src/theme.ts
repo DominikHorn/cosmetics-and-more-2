@@ -1,5 +1,5 @@
 import { ThemeOptions } from "@material-ui/core";
-import { blueGrey, deepPurple, lime, teal } from "@material-ui/core/colors";
+import { grey, lime, teal } from "@material-ui/core/colors";
 
 export const baseTheme: ThemeOptions = {
   typography: {
@@ -30,9 +30,6 @@ export const baseLightTheme: ThemeOptions = {
   palette: {
     primary: teal,
     secondary: lime,
-    background: {
-      default: "#fff",
-    },
     type: "light",
   },
 };
@@ -40,10 +37,11 @@ export const baseLightTheme: ThemeOptions = {
 export const baseDarkTheme: ThemeOptions = {
   ...baseTheme,
   palette: {
-    primary: deepPurple,
-    secondary: blueGrey,
+    primary: teal,
+    secondary: grey,
     background: {
-      default: "#212121",
+      default: "#101010",
+      paper: "#202020",
     },
     type: "dark",
   },

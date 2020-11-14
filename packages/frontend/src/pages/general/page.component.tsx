@@ -3,6 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { routes, IRoute } from "../../routing";
 import {
   createMuiTheme,
+  CssBaseline,
   ThemeProvider,
   useMediaQuery,
 } from "@material-ui/core";
@@ -35,6 +36,7 @@ export const PageComponent = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       {isDesktop ? (
         <DesktopPage {...navBarProps} />
       ) : (

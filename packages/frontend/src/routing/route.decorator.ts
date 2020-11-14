@@ -11,6 +11,7 @@ export const routes: (IRoute & {
 
 export function route(props: IRoute) {
   return function (target: typeof React.Component) {
+    if (routes.find((r) => r.path == props.path)) return;
     routes.push({
       component: target,
       exact: true,
