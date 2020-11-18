@@ -33,14 +33,14 @@ const cosmeticText = `
     perfekt qualifizierten Person für ihre kosmetischen Bedürfnisse.
     Vereinbaren Sie Ihren nächsten Wohlfühltermin gleich heute!`.trim();
 
-const tierversucheImage = "images/home/tierversuche.png";
-const tierversucheImageAlt = "Hase gegen Tierversuche Logo";
 const tierversucheText = `
     In meinem Salon verwende ich hochwertige Kosmetikprodukte von
     HAGINA Cosmetics, welche unter Zusatz natürlicher Inhaltsstoffe
     ohne Tierversuche, nach den Richtlinien des deutschen
     Tierverbundes e.V., im bayerischen Iffeldorf hergestellt und
-    abgefüllt werden.`.trim();
+    abgefüllt werden. HAGINA Cosmetics ist Mitglied des Internationalen 
+    Herstellerverbands gegen Tierversuche in der Kosmetik 
+    (Betriebsnummer H501029)`.trim();
 
 const friseurImage = "images/home/kaemmen_low.jpg";
 const friseurImageAlt = "Frau beim Haarstyling";
@@ -203,34 +203,7 @@ export const HomeContent = () => {
             </Slide>
           </Grid>
 
-          <Grid
-            container
-            item
-            lg={3}
-            md={5}
-            xs={12}
-            justify={"center"}
-            alignItems={"center"}
-          >
-            <Grid item sm={12} className={classes.tierversucheLogo}>
-              <Slide
-                direction={"left"}
-                in={true}
-                mountOnEnter
-                unmountOnExit
-                timeout={900}
-              >
-                <img
-                  src={tierversucheImage}
-                  alt={tierversucheImageAlt}
-                  width={"100%"}
-                  height={"auto"}
-                />
-              </Slide>
-            </Grid>
-          </Grid>
-
-          <Grid container item lg={9} md={7} xs={12} alignItems={"center"}>
+          <Grid container item xs={12} alignItems={"center"}>
             <Slide
               direction={"left"}
               in={true}
