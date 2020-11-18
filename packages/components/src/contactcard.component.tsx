@@ -59,7 +59,7 @@ function shouldDisableDate(date: MaterialUiPickersDate) {
   if (date && today > date) return true;
 
   const day = date?.getDay();
-  return day == 6 || day == 0;
+  return day == 6 || day == 0 || day == 1 || day == 5;
 }
 
 export const ContactCardComponent = (props: IContactCardComponentProps) => {
