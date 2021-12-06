@@ -48,9 +48,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const whatsappText = (date: Date) => `Hallo Frau Thurand, 
-ich wollte fragen, ob am ${new Intl.DateTimeFormat("de-DE").format(
+ich wollte fragen, ob Sie am ${new Intl.DateTimeFormat("de-DE").format(
   date
-)} noch ein Termin frei wäre. Vielen Dank`;
+)} noch einen Termin für mich hätten. Vielen Dank`;
 
 function shouldDisableDate(date: MaterialUiPickersDate) {
   const today = new Date();
