@@ -111,7 +111,7 @@ const ImpressumContent = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <Typography variant="h1">Impressum</Typography>
+      <Typography variant="h2">Impressum</Typography>
       <TableContainer>
         <Table
           className={classes.table}
@@ -122,7 +122,7 @@ const ImpressumContent = () => {
             {rows.map((row) => (
               <TableRow key={row.title}>
                 <TableCell component="th" scope="row" colSpan={2}>
-                  <Typography variant="h2">{row.title}</Typography>
+                  <Typography variant="h3">{row.title}</Typography>
                 </TableCell>
                 <TableCell align="center">{row.content}</TableCell>
               </TableRow>
@@ -131,10 +131,10 @@ const ImpressumContent = () => {
         </Table>
       </TableContainer>
 
-      <Typography variant="h1" style={{ marginTop: theme.spacing(4) }}>
+      <Typography variant="h2" style={{ marginTop: theme.spacing(4) }}>
         Datenschutzerklärung
       </Typography>
-      <Typography variant="subtitle1">Stand: 17. November 2020</Typography>
+      <Typography variant="subtitle1">Stand: 6. Dezember 2021</Typography>
       <div style={{ textAlign: "left", width: 700, margin: "0 auto" }}>
         <h2>Inhaltsübersicht</h2>
         <ul>
