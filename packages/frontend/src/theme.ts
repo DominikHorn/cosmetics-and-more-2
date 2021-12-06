@@ -16,10 +16,11 @@ export const baseTheme: ThemeOptions = {
       fontWeight: 400,
     },
     body1: {
-      fontSize: "0.875rem",
+      fontSize: "1rem",
       fontWeight: 200,
     },
     subtitle2: {
+      fontSize: "1rem",
       fontWeight: 200,
     },
   },
