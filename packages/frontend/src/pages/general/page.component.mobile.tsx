@@ -1,5 +1,11 @@
-import React, { RefObject, useEffect, useMemo } from "react";
-import { IRoute, routes } from "../../routing";
+import React, {
+  RefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { routes, ThemedRoute } from "../../routing";
 import {
   Fab,
   List,
@@ -10,6 +16,8 @@ import {
   makeStyles,
   Typography,
   useTheme,
+  Modal,
+  Box,
 } from "@material-ui/core";
 import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
@@ -40,10 +48,24 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 2,
   },
+  overlay: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "90%",
+    height: "95%",
+    overflowY: "scroll",
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: "24",
+  },
 }));
 
 const FloatingActionButton = (
-  props: IPageProps & { scrollTo: (r: IRoute) => void; currentRoute: IRoute }
+  props: IPageProps & {
+    currentRoute: ThemedRoute;
+    setCurrentRoute: (r: ThemedRoute) => void;
+  }
 ) => {
   const classes = useStyles(props);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -86,7 +108,7 @@ const FloatingActionButton = (
               alignItems={"center"}
               selected={props.currentRoute.path == r.path}
               onClick={() => {
-                props.scrollTo(r);
+                props.setCurrentRoute(r);
                 setDrawerOpen(false);
               }}
             >
@@ -139,29 +161,40 @@ export const MobilePage = (props: IPageProps) => {
     return scrollPosY < coords.bottom && scrollPosY >= coords.top - 5;
   };
 
-  const scrollTo = (route: IRoute) =>
-    window.scrollTo({
-      top: getCoords(subpageRefs[route.path]).top,
-      behavior: "smooth",
-    });
+  const [overlayRoute, setOverlayRoute] = useState<ThemedRoute | null>(null);
+  const closeOverlay = useCallback(() => setOverlayRoute(null), [
+    setOverlayRoute,
+  ]);
 
   // Register handler after first render to ensure that we scroll to correct
   // position if directly jumping to subpage
   const currentRoute = routes[props.routeIndex] || routes[0];
+  const setCurrentRoute = useCallback(
+    (route: ThemedRoute) => {
+      if (route.hideOnMobile) {
+        setOverlayRoute(route);
+      } else {
+        window.scrollTo({
+          top: getCoords(subpageRefs[route.path]).top,
+          behavior: "smooth",
+        });
+      }
+    },
+    [setOverlayRoute]
+  );
   useEffect(
-    () => window.addEventListener("load", () => scrollTo(currentRoute)),
+    () => window.addEventListener("load", () => setCurrentRoute(currentRoute)),
     []
   );
 
-  // make sure currentPath & visible components
+  // make sure path is updated during scrolling
   const visibleRoute =
     routes.find((r) => isInViewport(subpageRefs[r.path])) || currentRoute;
   useEffect(() => props.navigateTo(visibleRoute), [visibleRoute]);
 
-  const visibleRoutes = useMemo(
-    () => routes.filter((route) => !route.hideOnMobile),
-    [routes]
-  );
+  const visibleRoutes = useMemo(() => routes.filter((r) => !r.hideOnMobile), [
+    routes,
+  ]);
 
   return (
     <>
@@ -179,9 +212,20 @@ export const MobilePage = (props: IPageProps) => {
         </div>
       ))}
 
+      <Modal open={overlayRoute != null} onClose={closeOverlay}>
+        <Box className={classes.overlay}>
+          {overlayRoute != null &&
+            React.createElement(
+              overlayRoute.component as React.ComponentClass,
+              {},
+              null
+            )}
+        </Box>
+      </Modal>
+
       <FloatingActionButton
         {...props}
-        scrollTo={scrollTo}
+        setCurrentRoute={setCurrentRoute}
         currentRoute={currentRoute}
       />
     </>
