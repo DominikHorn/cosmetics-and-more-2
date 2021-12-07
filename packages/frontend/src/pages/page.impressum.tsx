@@ -122,7 +122,7 @@ const ImpressumContent = () => {
             {rows.map((row) => (
               <TableRow key={row.title}>
                 <TableCell component="th" scope="row" colSpan={2}>
-                  <Typography variant="h3">{row.title}</Typography>
+                  <Typography variant="h5">{row.title}</Typography>
                 </TableCell>
                 <TableCell align="center">{row.content}</TableCell>
               </TableRow>
@@ -131,7 +131,7 @@ const ImpressumContent = () => {
         </Table>
       </TableContainer>
 
-      <Typography variant="h2" style={{ marginTop: theme.spacing(4) }}>
+      <Typography variant="h3" style={{ marginTop: theme.spacing(4) }}>
         Datenschutzerklärung
       </Typography>
       <Typography variant="subtitle1">Stand: 6. Dezember 2021</Typography>
