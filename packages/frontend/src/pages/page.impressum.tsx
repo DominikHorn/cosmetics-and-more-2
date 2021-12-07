@@ -110,7 +110,7 @@ const ImpressumContent = () => {
   const theme = useTheme();
 
   return (
-    <div style={{ textAlign: "center", padding: "10px" }}>
+    <div style={{ textAlign: "center", padding: theme.spacing(1) }}>
       <Typography variant="h2">Impressum</Typography>
       <TableContainer>
         <Table
