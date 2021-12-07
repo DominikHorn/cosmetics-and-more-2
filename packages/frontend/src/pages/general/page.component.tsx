@@ -10,6 +10,7 @@ import {
 import { INavigationProps } from "./types";
 import { DesktopPage } from "./page.component.desktop";
 import { MobilePage } from "./page.component.mobile";
+import { InfoBannerComponent } from "@cosmetics-and-more/components";
 
 export const PageComponent = () => {
   const history = useHistory();
@@ -42,6 +43,8 @@ export const PageComponent = () => {
       ) : (
         <MobilePage {...navBarProps} />
       )}
+
+      <InfoBannerComponent message="Bitte beachten Sie die geltenden Coronaregeln, insbesondere 2G bei Friseur- und Kosmetikbetrieben" />
     </ThemeProvider>
   );
 };
