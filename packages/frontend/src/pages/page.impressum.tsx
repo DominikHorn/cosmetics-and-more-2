@@ -39,7 +39,7 @@ export class ImpressumPage extends React.PureComponent {
 
 const useStyles = makeStyles({
   table: {
-    width: 700,
+    maxWidth: "700px",
   },
 });
 
@@ -110,7 +110,7 @@ const ImpressumContent = () => {
   const theme = useTheme();
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center", padding: "10px" }}>
       <Typography variant="h2">Impressum</Typography>
       <TableContainer>
         <Table
@@ -135,7 +135,13 @@ const ImpressumContent = () => {
         Datenschutzerklärung
       </Typography>
       <Typography variant="subtitle1">Stand: 6. Dezember 2021</Typography>
-      <div style={{ textAlign: "left", width: 700, margin: "0 auto" }}>
+      <div
+        style={{
+          textAlign: "left",
+          maxWidth: "700px",
+          margin: "0 auto",
+        }}
+      >
         <h2>Inhaltsübersicht</h2>
         <ul>
           <li>
