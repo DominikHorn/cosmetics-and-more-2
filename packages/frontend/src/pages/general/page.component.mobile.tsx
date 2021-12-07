@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
   floatingActionButton: {
     /* stick to bottom of screen */
     position: "fixed",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    top: theme.spacing(0.8),
+    right: theme.spacing(1),
     zIndex: 3,
   },
   tabIndicator: {
@@ -64,6 +64,7 @@ const FloatingActionButton = (
     <>
       <Fab
         className={classes.floatingActionButton}
+        size={"small"}
         color="primary"
         onClick={() => setDrawerOpen(!drawerOpen)}
       >
