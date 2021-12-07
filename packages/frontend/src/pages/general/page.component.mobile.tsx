@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect } from "react";
+import React, { RefObject, useEffect, useMemo } from "react";
 import { IRoute, routes } from "../../routing";
 import {
   Fab,
@@ -158,9 +158,14 @@ export const MobilePage = (props: IPageProps) => {
     routes.find((r) => isInViewport(subpageRefs[r.path])) || currentRoute;
   useEffect(() => props.navigateTo(visibleRoute), [visibleRoute]);
 
+  const visibleRoutes = useMemo(
+    () => routes.filter((route) => !route.hideOnMobile),
+    [routes]
+  );
+
   return (
     <>
-      {routes.map((r, i) => (
+      {visibleRoutes.map((r, i) => (
         <div
           key={i}
           ref={subpageRefs[r.path]}

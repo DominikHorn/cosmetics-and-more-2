@@ -17,6 +17,7 @@ import {
   displayName: "Impressum & Datenschutz",
   path: "/impressum",
   icon: <PrivacyIcon />,
+  hideOnMobile: true,
   lightTheme: {
     palette: {
       primary: lightGreen,
