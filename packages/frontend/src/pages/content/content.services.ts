@@ -5,23 +5,23 @@ export const cosmeticServices: IService[] = [
     title: "Handpflege",
     imageURL: "images/services/manicure_low.jpg",
     variants: [
-      { title: "Maniküre", price: "14" },
+      { title: "Maniküre", price: "16" },
       {
         title: "Mit Naturlack oder Polieren",
-        price: "17",
+        price: "19",
       },
       {
         title: "Mit Farblack",
-        price: "20",
+        price: "22",
       },
       {
         title: "Mit Shellac",
-        price: "30",
+        price: "32",
         info: "Hält circa 14 Tage",
       },
       {
         title: "Mit Handmassage",
-        price: "20",
+        price: "22",
       },
     ],
   },
@@ -29,11 +29,11 @@ export const cosmeticServices: IService[] = [
     title: "Fußpflege",
     imageURL: "images/services/pedicure_low.jpg",
     variants: [
-      { title: "Pediküre", price: "20" },
-      { title: "Mit Naturlack oder polieren", price: "22" },
-      { title: "Mit Farblack", price: "24" },
-      { title: "Mit Shellac", price: "30", info: "Hält circa 14 Tage" },
-      { title: "Mit Fußmassage", price: "25" },
+      { title: "Pediküre", price: "22" },
+      { title: "Mit Naturlack oder polieren", price: "24" },
+      { title: "Mit Farblack", price: "26" },
+      { title: "Mit Shellac", price: "32", info: "Hält circa 14 Tage" },
+      { title: "Mit Fußmassage", price: "27" },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const cosmeticServices: IService[] = [
     imageURL: "images/services/facial_low.jpg",
     duration: 70,
     description: `Die Gesichtsbehandlung umfasst folgende Leistungen: Reinigung, Hautanalyse, Peeling, Entfernen von Unreinheiten, Augenbrauenkorrektur, Wirkstoffpackung, Gesicht-, Hals und Dekolletemassage, Ampulle, Tagescreme`,
-    price: "51",
+    price: "53",
   },
   {
     title: "Haarentfernung mit Warmwachs",
@@ -49,19 +49,19 @@ export const cosmeticServices: IService[] = [
     variants: [
       {
         title: "Oberlippe",
-        price: "7",
+        price: "9",
       },
       {
         title: "Unterschenkel",
-        price: "20",
+        price: "22",
       },
       {
         title: "Oberschenkel",
-        price: "23",
+        price: "25",
       },
       {
         title: "Beine komplett",
-        price: "36",
+        price: "38",
       },
     ],
   },
@@ -70,15 +70,15 @@ export const cosmeticServices: IService[] = [
     imageURL: "images/services/massage_low.jpg",
     duration: 40,
     description: `Die Massage dient der Lockerung der Muskulatur, entspannt und beruhigt. Durch den Einsatz von natürlichen Ölen wird die Haut gepflegt.`,
-    price: "42",
+    price: "44",
   },
   {
     title: "Sonstiges",
     imageURL: "images/services/augenbrauen.jpg",
     variants: [
-      { title: "Augenbrauenkorrektur", price: "6" },
-      { title: "Augenbrauen Färben", price: "6" },
-      { title: "Wimpern Färben", price: "6" },
+      { title: "Augenbrauenkorrektur", price: "8" },
+      { title: "Augenbrauen Färben", price: "8" },
+      { title: "Wimpern Färben", price: "8" },
     ],
   },
 ];
@@ -91,18 +91,18 @@ export const hairServices: IService[] = [
     variants: [
       {
         title: "Trockenschnitt",
-        price: "25 / 30",
+        price: "27 / 32",
       },
       {
         title: "Waschen, Schneiden, Föhnen",
-        price: "35 / 40",
+        price: "37 / 42",
       },
-      { title: "Standard Steckfrisur", price: "20" },
+      { title: "Standard Steckfrisur", price: "22" },
       {
         title: "Dauerwelle/Volumenwelle",
-        price: "40 / 50",
+        price: "42 / 52",
       },
-      { title: "Brautsteckfrisur inkl. Make-Up", price: "100" },
+      { title: "Brautsteckfrisur inkl. Make-Up", price: "102" },
     ],
   },
   {
@@ -113,12 +113,12 @@ export const hairServices: IService[] = [
       {
         title: "Foliensträhne",
         info: "je Folie",
-        price: "1 / 1,50",
+        price: "1,50 / 2",
       },
-      { title: "Ansätze färben", info: "ca. 2cm", price: "25" },
-      { title: "Tönung", price: "25 / 30" },
-      { title: "Farbe komplett", price: "30 / 40" },
-      { title: "Blondieren", price: "30 / 40" },
+      { title: "Ansätze färben", info: "ca. 2cm", price: "27" },
+      { title: "Tönung", price: "27 / 32" },
+      { title: "Farbe komplett", price: "32 / 42" },
+      { title: "Blondieren", price: "32 / 42" },
     ],
   },
   {
@@ -126,17 +126,17 @@ export const hairServices: IService[] = [
     imageURL: "images/services/schneiden_low.jpg",
     variantsHeader: { priceColumn: "kurz / lang" },
     variants: [
-      { title: "Schnitt Jungs", info: "Bis 14 Jahre", price: "13" },
+      { title: "Schnitt Jungs", info: "Bis 14 Jahre", price: "15" },
       {
         title: "Schnitt Mädchen",
         info: "Bis 14 Jahre",
-        price: "13 / 16",
+        price: "15 / 18",
       },
       { title: "\xa0" }, // spacing to distinguish children from adults
-      { title: "Schneiden mit Maschine", price: "15" },
-      { title: "Trockenschnitt", price: "19" },
-      { title: "Waschen, Schneiden, Föhnen", price: "24" },
-      { title: "Bartkonturen schneiden", price: "5" },
+      { title: "Schneiden mit Maschine", price: "17" },
+      { title: "Trockenschnitt", price: "21" },
+      { title: "Waschen, Schneiden, Föhnen", price: "26" },
+      { title: "Bartkonturen schneiden", price: "7" },
     ],
   },
 ];
