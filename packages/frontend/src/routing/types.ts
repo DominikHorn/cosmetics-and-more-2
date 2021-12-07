@@ -7,6 +7,7 @@ export interface IRoute extends RouteProps {
   readonly displayName: string;
   readonly icon: ReactElement;
   readonly prio: number;
+  readonly hideOnMobile?: boolean;
   readonly lightTheme?: ThemeOptions;
   readonly darkTheme?: ThemeOptions;
 }

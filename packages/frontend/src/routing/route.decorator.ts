@@ -4,10 +4,12 @@ import { ThemeOptions } from "@material-ui/core";
 import { baseDarkTheme, baseLightTheme } from "../theme";
 import { mergeDeep } from "@cosmetics-and-more/utilities";
 
-export const routes: (IRoute & {
-  darkTheme: ThemeOptions;
-  lightTheme: ThemeOptions;
-})[] = [];
+export interface ThemedRoute extends IRoute {
+  readonly darkTheme: ThemeOptions;
+  readonly lightTheme: ThemeOptions;
+}
+
+export const routes: ThemedRoute[] = [];
 
 export function route(props: IRoute) {
   return function (target: typeof React.Component) {
