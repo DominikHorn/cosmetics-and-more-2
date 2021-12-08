@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { routes, IRoute } from "../../routing";
 import {
@@ -11,6 +11,8 @@ import { INavigationProps } from "./types";
 import { DesktopPage } from "./page.component.desktop";
 import { MobilePage } from "./page.component.mobile";
 import { InfoBannerComponent } from "@cosmetics-and-more/components";
+import Snowflakes from "magic-snowflakes";
+import { isWinter } from "@cosmetics-and-more/utilities";
 
 export const PageComponent = () => {
   const history = useHistory();
@@ -34,6 +36,28 @@ export const PageComponent = () => {
     // load
     noSsr: true,
   });
+
+  // snow effect during winter
+  const shouldSnow = isWinter();
+  const snowflakes = useMemo(
+    () =>
+      new Snowflakes({
+        color: "#85dede",
+        count: 40,
+        minOpacity: 0.8,
+        maxOpacity: 1.0,
+        minSize: 10,
+        maxSize: 25,
+        rotation: true,
+        speed: 1,
+        wind: true,
+      }),
+    []
+  );
+  useEffect(
+    () => (shouldSnow ? snowflakes && snowflakes.start() : snowflakes.stop()),
+    [shouldSnow]
+  );
 
   return (
     <ThemeProvider theme={theme}>

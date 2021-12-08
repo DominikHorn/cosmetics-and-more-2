@@ -23,6 +23,7 @@ import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
 import MenuIcon from "@material-ui/icons/Menu";
 import { FairyLights } from "@cosmetics-and-more/components";
+import { isWinter } from "@cosmetics-and-more/utilities";
 
 type SubpageRefs = { [path: string]: RefObject<any> };
 
@@ -127,6 +128,7 @@ let subpageRefs: SubpageRefs;
 export const MobilePage = (props: IPageProps) => {
   const classes = useStyles(props);
   const theme = useTheme();
+  const showLights = isWinter();
 
   // make sure component is redrawn when view scrolls
   // (otherwise route url can not correctly update)
@@ -208,7 +210,8 @@ export const MobilePage = (props: IPageProps) => {
           <Typography variant="h2" className={classes.pageTitle}>
             {r.displayName}
           </Typography>
-          <FairyLights style={{ marginTop: "38px" }} />
+
+          {showLights && <FairyLights style={{ marginTop: "38px" }} />}
 
           {React.createElement(r.component as React.ComponentClass, {}, null)}
         </div>

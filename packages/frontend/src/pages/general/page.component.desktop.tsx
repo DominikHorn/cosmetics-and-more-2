@@ -4,6 +4,7 @@ import { routes } from "../../routing";
 import { AppBar, Tabs, Tab, useTheme, makeStyles } from "@material-ui/core";
 import { INavigationProps } from "./types";
 import { FairyLights } from "@cosmetics-and-more/components";
+import { isWinter } from "@cosmetics-and-more/utilities";
 
 const useStyles = makeStyles((theme) => ({
   stickToBottom: {
@@ -20,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 export const DesktopPage = (props: INavigationProps) => {
   const classes = useStyles(props);
   const theme = useTheme();
+
+  const showLights = isWinter();
 
   return (
     <>
@@ -40,7 +43,7 @@ export const DesktopPage = (props: INavigationProps) => {
         </Tabs>
       </AppBar>
 
-      <FairyLights style={{ marginTop: "30px" }} />
+      {showLights && <FairyLights style={{ marginTop: "30px" }} />}
 
       <div style={{ margin: theme.spacing(1) }}>
         <Switch>
