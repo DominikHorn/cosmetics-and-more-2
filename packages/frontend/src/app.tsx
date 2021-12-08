@@ -10,23 +10,27 @@ const AppComponent = (): React.ReactElement => {
   const now = new Date();
   const month = now.getUTCMonth() + 1;
   const shouldSnow = month > 11 || month < 2;
+  const [snowflakes, setSnowflakes] = useState<Snowflakes | null>(null);
 
-  const [snowflakes] = useState(
-    new Snowflakes({
-      color: "#85dede",
-      count: 100,
-      minOpacity: 0.8,
-      maxOpacity: 1.0,
-      minSize: 15,
-      maxSize: 30,
-      rotation: true,
-      speed: 1,
-      wind: true,
-    })
-  );
-  useEffect(() => (shouldSnow ? snowflakes.start() : snowflakes.stop()), [
-    shouldSnow,
-  ]);
+  useEffect(() => {
+    if (shouldSnow && snowflakes == null) {
+      setSnowflakes(
+        new Snowflakes({
+          color: "#85dede",
+          count: 40,
+          minOpacity: 0.8,
+          maxOpacity: 1.0,
+          minSize: 10,
+          maxSize: 25,
+          rotation: true,
+          speed: 1,
+          wind: true,
+        })
+      );
+    } else {
+      setSnowflakes(null);
+    }
+  }, [shouldSnow]);
 
   return (
     <Router>
