@@ -66,7 +66,7 @@ module.exports = {
     disableHostCheck: true,
     historyApiFallback: true,
     watchOptions: {
-      ignored: ["node_modules/**", "packages/**/*.ts", "packages/**/*.tsx"],
+      ignored: ["**/node_modules/**", "**/*.json", "**/*.ts", "**/*.tsx"],
     },
     headers: {
       "Access-Control-Allow-Origin": "*",
