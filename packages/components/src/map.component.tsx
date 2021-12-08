@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import _uniqueId from "lodash/uniqueId";
 
-const useStyles = makeStyles({
-  map: { width: "100%", height: "calc(100vh - 90px)" },
-});
+const useStyles = makeStyles((theme) => ({
+  map: {
+    width: "100%",
+    height: "calc(100vh - 420px)",
+    [theme.breakpoints.down("sm")]: {
+      height: "55vh",
+    },
+  },
+}));
 export const MapComponent = () => {
   const classes = useStyles();
   const mapkit = (window as any).mapkit;
