@@ -59,6 +59,14 @@ export const PageComponent = () => {
     [shouldSnow]
   );
 
+  useEffect(() => {
+    const tag = document.querySelector('meta[name="theme-color"]');
+    console.log("found tag", tag);
+    if (tag) {
+      tag.setAttribute("content", theme.palette.primary.main);
+    }
+  }, [theme.palette.primary]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
