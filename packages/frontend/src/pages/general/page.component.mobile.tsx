@@ -201,11 +201,7 @@ export const MobilePage = (props: IPageProps) => {
   return (
     <>
       {visibleRoutes.map((r, i) => (
-        <div
-          key={i}
-          ref={subpageRefs[r.path]}
-          style={{ marginBottom: i < routes.length - 1 ? theme.spacing(4) : 0 }}
-        >
+        <div key={i} ref={subpageRefs[r.path]}>
           <Typography variant="h2" className={classes.pageTitle}>
             {r.displayName}
           </Typography>
