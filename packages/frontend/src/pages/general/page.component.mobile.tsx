@@ -22,6 +22,7 @@ import {
 import { INavigationProps as IPageProps } from "./types";
 import useScrollPosition from "@react-hook/window-scroll";
 import MenuIcon from "@material-ui/icons/Menu";
+import { FairyLights } from "@cosmetics-and-more/components";
 
 type SubpageRefs = { [path: string]: RefObject<any> };
 
@@ -207,6 +208,7 @@ export const MobilePage = (props: IPageProps) => {
           <Typography variant="h2" className={classes.pageTitle}>
             {r.displayName}
           </Typography>
+          <FairyLights style={{ marginTop: "38px" }} />
 
           {React.createElement(r.component as React.ComponentClass, {}, null)}
         </div>

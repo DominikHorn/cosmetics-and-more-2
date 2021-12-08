@@ -38,6 +38,7 @@ export const PageComponent = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       {isDesktop ? (
         <DesktopPage {...navBarProps} />
       ) : (

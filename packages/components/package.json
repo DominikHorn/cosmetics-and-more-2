@@ -6,13 +6,17 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf bundle/ dist/ tsconfig.tsbuildinfo",
+    "copycss": "copyfiles -f 'src/decoration/*.scss' dist/decoration/",
     "purge": "rimraf node_modules"
   },
   "devDependencies": {
     "@cosmetics-and-more/types": "^1.0.0",
+    "@types/lodash": "^4.14.164",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
-    "@types/lodash": "^4.14.164"
+    "copyfiles": "^2.4.1",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.4.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { routes } from "../../routing";
 import { AppBar, Tabs, Tab, useTheme, makeStyles } from "@material-ui/core";
 import { INavigationProps } from "./types";
+import { FairyLights } from "@cosmetics-and-more/components";
 
 const useStyles = makeStyles((theme) => ({
   stickToBottom: {
@@ -38,6 +39,8 @@ export const DesktopPage = (props: INavigationProps) => {
           ))}
         </Tabs>
       </AppBar>
+
+      <FairyLights style={{ marginTop: "30px" }} />
 
       <div style={{ margin: theme.spacing(1) }}>
         <Switch>
