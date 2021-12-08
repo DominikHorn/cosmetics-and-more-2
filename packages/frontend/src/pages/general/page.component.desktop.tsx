@@ -43,7 +43,9 @@ export const DesktopPage = (props: INavigationProps) => {
         </Tabs>
       </AppBar>
 
-      {showLights && <FairyLights style={{ marginTop: "30px" }} />}
+      {showLights && (
+        <FairyLights lightCount={50} style={{ marginTop: "30px" }} />
+      )}
 
       <div style={{ margin: theme.spacing(1) }}>
         <Switch>

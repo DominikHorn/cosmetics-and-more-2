@@ -7,7 +7,7 @@ export const FairyLights = (
   } & React.ComponentProps<"ul">
 ): React.ReactElement => (
   <ul {...props} className={styles["fairylights"] || "fairylights"}>
-    {Array.from(Array(props.lightCount || 30).keys()).map((id) => (
+    {Array.from(Array(props.lightCount || 15).keys()).map((id) => (
       <li key={id} />
     ))}
   </ul>
