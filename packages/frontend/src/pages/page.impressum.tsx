@@ -534,32 +534,31 @@ const ImpressumContent = () => {
           <li>
             <strong>American Express:</strong> Zahlungsdienstleistungen;
             Dienstanbieter: American Express Europe S.A., Theodor-Heuss-Allee
-            112, 60486 Frankfurt am Main, Deutschland; Website:
+            112, 60486 Frankfurt am Main, Deutschland;
             <a href="https://www.americanexpress.com/de" target="_blank">
-              https://www.americanexpress.com/de
+              Website
             </a>
-            ; Datenschutzerklärung:
+            ;
             <a
               href="https://www.americanexpress.com/de/legal/online-datenschutzerklarung.html"
               target="_blank"
             >
-              https://www.americanexpress.com/de/legal/online-datenschutzerklarung.html
+              Datenschutzerklärung
             </a>
             .
           </li>
           <li>
             <strong>Apple Pay:</strong> Zahlungsdienstleistungen;
             Dienstanbieter: Apple Inc., Infinite Loop, Cupertino, CA 95014, USA;
-            Website:
             <a href="https://www.apple.com/de/apple-pay/" target="_blank">
-              https://www.apple.com/de/apple-pay/
+              Website
             </a>
-            ; Datenschutzerklärung:
+            ;
             <a
               href="https://www.apple.com/legal/privacy/de-ww/"
               target="_blank"
             >
-              https://www.apple.com/legal/privacy/de-ww/
+              Datenschutzerklärung
             </a>
             .
           </li>
@@ -567,45 +566,45 @@ const ImpressumContent = () => {
             <strong>Google Pay:</strong> Zahlungsdienstleistungen;
             Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street,
             Dublin 4, Irland, Mutterunternehmen: Google LLC, 1600 Amphitheatre
-            Parkway, Mountain View, CA 94043, USA; Website:
+            Parkway, Mountain View, CA 94043, USA;
             <a href="https://pay.google.com/intl/de_de/about/" target="_blank">
-              https://pay.google.com/intl/de_de/about/
+              Website
             </a>
-            ; Datenschutzerklärung:
+            ;
             <a href="https://policies.google.com/privacy" target="_blank">
-              https://policies.google.com/privacy
+              Datenschutzerklärung
             </a>
             .
           </li>
           <li>
             <strong>Mastercard:</strong> Zahlungsdienstleistungen;
             Dienstanbieter: Mastercard Europe SA, Chaussée de Tervuren 198A,
-            B-1410 Waterloo, Belgien; Website:
+            B-1410 Waterloo, Belgien;
             <a href="https://www.mastercard.de/de-de.html" target="_blank">
-              https://www.mastercard.de/de-de.html
+              Website
             </a>
-            ; Datenschutzerklärung:
+            ;
             <a
               href="https://www.mastercard.de/de-de/datenschutz.html"
               target="_blank"
             >
-              https://www.mastercard.de/de-de/datenschutz.html
+              Datenschutzerklärung
             </a>
             .
           </li>
           <li>
             <strong>Visa:</strong> Zahlungsdienstleistungen; Dienstanbieter:
             Visa Europe Services Inc., Zweigniederlassung London, 1 Sheldon
-            Square, London W2 6TT, GB; Website:
+            Square, London W2 6TT, GB;
             <a href="https://www.visa.de" target="_blank">
-              https://www.visa.de
+              Website
             </a>
-            ; Datenschutzerklärung:
+            ;
             <a
               href="https://www.visa.de/nutzungsbedingungen/visa-privacy-center.html"
               target="_blank"
             >
-              https://www.visa.de/nutzungsbedingungen/visa-privacy-center.html
+              Datenschutzerklärung
             </a>
             .
           </li>
@@ -617,16 +616,16 @@ const ImpressumContent = () => {
           <li>
             <strong>Diners Club: </strong> Diners Club International Ltd., 2500
             Lake Cook Road, Riverwoods, IL 60016, USA, für die Zahlungsmarken
-            “Diners”, “Diners Club” und “Discover”; Datenschutzerklärung:
+            “Diners”, “Diners Club” und “Discover”;
             <a href="https://www.dinersclub.com/privacy-policy" target="_blank">
-              https://www.dinersclub.com/privacy-policy
+              Datenschutzerklärung
             </a>
           </li>
           <li>
             <strong>JCB: </strong>JCB International Co., Ltd., 5-1-22, Minami
             Aoyama, Minato-Ku, Tokio, Japan, für die Zahlungsmarke „JCB“.
             <a href="http://www.jcbeurope.eu/privacy/" target="_blank">
-              http://www.jcbeurope.eu/privacy/
+              Datenschutzerklärung
             </a>
           </li>
         </ul>
