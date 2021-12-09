@@ -6,7 +6,6 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - master
-      - development # TODO: remove once actually in production
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
