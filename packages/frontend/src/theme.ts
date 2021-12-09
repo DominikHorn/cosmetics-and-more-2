@@ -1,34 +1,49 @@
 import { ThemeOptions } from "@material-ui/core";
-import { blue, deepOrange, lightBlue } from "@material-ui/core/colors";
+import { grey, lime, teal } from "@material-ui/core/colors";
 
-export const lightTheme: ThemeOptions = {
-  palette: {
-    primary: blue,
-    secondary: blue,
-    background: {
-      default: "#f5f5f5",
-    },
-    type: "light",
-  },
+export const baseTheme: ThemeOptions = {
   typography: {
+    h2: {
+      fontSize: "2rem",
+      fontWeight: 300,
+    },
+    h3: {
+      fontSize: "1.5rem",
+      fontWeight: 300,
+    },
     h5: {
-      fontWeight: 700,
+      fontSize: "1.25rem",
+      fontWeight: 400,
+    },
+    body1: {
+      fontSize: "1rem",
+      fontWeight: 200,
+    },
+    subtitle2: {
+      fontSize: "1rem",
+      fontWeight: 200,
     },
   },
 };
 
-export const darkTheme: ThemeOptions = {
+export const baseLightTheme: ThemeOptions = {
+  ...baseTheme,
   palette: {
-    primary: deepOrange,
-    secondary: lightBlue,
+    primary: teal,
+    secondary: lime,
+    type: "light",
+  },
+};
+
+export const baseDarkTheme: ThemeOptions = {
+  ...baseTheme,
+  palette: {
+    primary: teal,
+    secondary: grey,
     background: {
-      default: "#212121",
+      default: "#101010",
+      paper: "#202020",
     },
     type: "dark",
-  },
-  typography: {
-    h5: {
-      fontWeight: 700,
-    },
   },
 };

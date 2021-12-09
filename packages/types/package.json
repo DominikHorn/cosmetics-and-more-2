@@ -7,6 +7,7 @@
     "clean": "rimraf dist/ tsconfig.tsbuildinfo",
     "purge": "rimraf node_modules"
   },
+  "sideEffects": false,
   "devDependencies": {},
   "dependencies": {}
 }
