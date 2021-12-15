@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "calc(100vh - 420px)",
     [theme.breakpoints.down("sm")]: {
-      height: "55vh",
+      height: "60vh",
     },
   },
 }));
