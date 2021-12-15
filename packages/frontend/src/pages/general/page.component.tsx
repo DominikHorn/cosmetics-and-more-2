@@ -77,7 +77,15 @@ export const PageComponent = () => {
         <MobilePage {...navBarProps} />
       )}
 
-      <InfoBannerComponent message="Bitte beachten Sie die geltenden Coronaregeln, insbesondere 2G bei Friseur- und Kosmetikbetrieben" />
+      {/*<InfoBannerComponent message={"Bitte beachten Sie die geltenden Coronaregeln, insbesondere 2G bei Friseur- und Kosmetikbetrieben"} />*/}
+      <InfoBannerComponent
+        title={
+          "Leider habe ich aus familiären Gründen bis auf weiteres geschlossen"
+        }
+        message={
+          "Ich wünsche Ihnen eine frohe Adventszeit und hoffe Sie bald wieder bei mir begrüßen zu können."
+        }
+      />
     </ThemeProvider>
   );
 };
