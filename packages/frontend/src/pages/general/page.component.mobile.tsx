@@ -177,7 +177,7 @@ export const MobilePage = (props: IPageProps) => {
         setOverlayRoute(route);
       } else {
         window.scrollTo({
-          top: getCoords(subpageRefs[route.path]).top,
+          top: getCoords(subpageRefs[route.path]).top + 2,
           behavior: "smooth",
         });
       }
