@@ -6,10 +6,11 @@ import {
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 export interface IInfoBannerComponentProps {
   readonly message: string;
+  readonly title?: string;
   readonly severity?: "error" | "info";
 }
 
@@ -47,7 +48,8 @@ export const InfoBannerComponent = (props: IInfoBannerComponentProps) => {
       className={isDesktop ? classes.desktopBar : classes.mobileBar}
     >
       <Alert severity={props.severity || "error"} onClose={handleClose}>
-        <Typography variant="h5">{props.message}</Typography>
+        {props.title && <AlertTitle>{props.title}</AlertTitle>}
+        {props.message}
       </Alert>
     </Snackbar>
   );
