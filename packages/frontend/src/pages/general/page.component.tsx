@@ -76,12 +76,6 @@ export const PageComponent = () => {
       ) : (
         <MobilePage {...navBarProps} />
       )}
-
-      <InfoBannerComponent
-        message={
-          "Bitte beachten Sie die geltenden Coronaregeln, insbesondere 2G bei Friseur- und Kosmetikbetrieben"
-        }
-      />
     </ThemeProvider>
   );
 };
