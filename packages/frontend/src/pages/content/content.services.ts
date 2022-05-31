@@ -5,23 +5,23 @@ export const cosmeticServices: IService[] = [
     title: "Handpflege",
     imageURL: "images/services/manicure_low.jpg",
     variants: [
-      { title: "Maniküre", price: "16" },
+      { title: "Maniküre", price: "18" },
       {
         title: "Mit Naturlack oder Polieren",
-        price: "19",
+        price: "21",
       },
       {
         title: "Mit Farblack",
-        price: "22",
+        price: "24",
       },
       {
         title: "Mit Shellac",
-        price: "32",
+        price: "37",
         info: "Hält circa 14 Tage",
       },
       {
         title: "Mit Handmassage",
-        price: "22",
+        price: "24",
       },
     ],
   },
@@ -29,11 +29,11 @@ export const cosmeticServices: IService[] = [
     title: "Fußpflege",
     imageURL: "images/services/pedicure_low.jpg",
     variants: [
-      { title: "Pediküre", price: "22" },
-      { title: "Mit Naturlack oder polieren", price: "24" },
-      { title: "Mit Farblack", price: "26" },
-      { title: "Mit Shellac", price: "32", info: "Hält circa 14 Tage" },
-      { title: "Mit Fußmassage", price: "27" },
+      { title: "Pediküre", price: "24" },
+      { title: "Mit Naturlack oder polieren", price: "26" },
+      { title: "Mit Farblack", price: "28" },
+      { title: "Mit Shellac", price: "37", info: "Hält circa 14 Tage" },
+      { title: "Mit Fußmassage", price: "29" },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const cosmeticServices: IService[] = [
     imageURL: "images/services/facial_low.jpg",
     duration: 70,
     description: `Die Gesichtsbehandlung umfasst folgende Leistungen: Reinigung, Hautanalyse, Peeling, Entfernen von Unreinheiten, Augenbrauenkorrektur, Wirkstoffpackung, Gesicht-, Hals und Dekolletemassage, Ampulle, Tagescreme`,
-    price: "53",
+    price: "60",
   },
   {
     title: "Haarentfernung mit Warmwachs",
@@ -51,26 +51,7 @@ export const cosmeticServices: IService[] = [
         title: "Oberlippe",
         price: "9",
       },
-      {
-        title: "Unterschenkel",
-        price: "22",
-      },
-      {
-        title: "Oberschenkel",
-        price: "25",
-      },
-      {
-        title: "Beine komplett",
-        price: "38",
-      },
     ],
-  },
-  {
-    title: "Rückenmassage mit Peeling",
-    imageURL: "images/services/massage_low.jpg",
-    duration: 40,
-    description: `Die Massage dient der Lockerung der Muskulatur, entspannt und beruhigt. Durch den Einsatz von natürlichen Ölen wird die Haut gepflegt.`,
-    price: "44",
   },
   {
     title: "Sonstiges",
@@ -95,14 +76,13 @@ export const hairServices: IService[] = [
       },
       {
         title: "Waschen, Schneiden, Föhnen",
-        price: "37 / 42",
+        price: "39 / 44",
       },
-      { title: "Standard Steckfrisur", price: "22" },
+      { title: "Standard Steckfrisur", price: "24" },
       {
         title: "Dauerwelle/Volumenwelle",
-        price: "42 / 52",
+        price: "44 / 54",
       },
-      { title: "Brautsteckfrisur inkl. Make-Up", price: "102" },
     ],
   },
   {
@@ -115,10 +95,10 @@ export const hairServices: IService[] = [
         info: "je Folie",
         price: "1,50 / 2",
       },
-      { title: "Ansätze färben", info: "ca. 2cm", price: "27" },
-      { title: "Tönung", price: "27 / 32" },
-      { title: "Farbe komplett", price: "32 / 42" },
-      { title: "Blondieren", price: "32 / 42" },
+      { title: "Ansätze färben", info: "ca. 2cm", price: "29" },
+      { title: "Tönung", price: "29 / 34" },
+      { title: "Farbe komplett", price: "34 / 44" },
+      { title: "Blondieren", price: "34 / 44" },
     ],
   },
   {
