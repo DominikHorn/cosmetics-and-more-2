@@ -16,7 +16,7 @@ export const cosmeticServices: IService[] = [
       },
       {
         title: "Mit Shellac",
-        price: "37",
+        price: "40",
         info: "Hält circa 14 Tage",
       },
       {
@@ -32,7 +32,7 @@ export const cosmeticServices: IService[] = [
       { title: "Pediküre", price: "24" },
       { title: "Mit Naturlack oder polieren", price: "26" },
       { title: "Mit Farblack", price: "28" },
-      { title: "Mit Shellac", price: "37", info: "Hält circa 14 Tage" },
+      { title: "Mit Shellac", price: "40", info: "Hält circa 14 Tage" },
       { title: "Mit Fußmassage", price: "29" },
     ],
   },
