@@ -67,11 +67,8 @@ module.exports = {
     hot: true,
     host: "0.0.0.0",
     port: 8080,
-    disableHostCheck: true,
     historyApiFallback: true,
-    watchOptions: {
-      ignored: ["**/node_modules/**", "**/*.json", "**/*.ts", "**/*.tsx"],
-    },
+    watchFiles: ["packages/**"],
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "*",
