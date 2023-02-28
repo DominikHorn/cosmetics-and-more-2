@@ -1,3 +1,6 @@
+This License does not apply to the images in this repository, as these are privately licensed from
+a third party solely for the usage in this website.
+
 THIS LICENSE ONLY APPLIES TO ACTUAL SOURCE CODE CONTAINED IN .ts, .tsx FILES
 AS WELL AS THE NECESSARY CONFIGURATION FILES TO RUN THE CODE, e.g., 
 package.json, webpack.dev.json, tsconfig.json ET CETERA.

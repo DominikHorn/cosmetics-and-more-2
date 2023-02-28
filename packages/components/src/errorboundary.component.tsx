@@ -46,7 +46,7 @@ export class ErrorBoundaryComponent extends React.Component<
   render(): React.ReactNode {
     const { error } = this.state;
     if (error) {
-      return renderError(error);
+      return <>renderError(error)</>;
     }
     return <>{this.props.children}</>;
   }
@@ -62,7 +62,7 @@ export class ErrorBoundaryComponent extends React.Component<
  * @param WrappedComponent component to wrap
  * @param errorRenderer callback to render error ui
  */
-export function withErrorBoundary<TProps>(
+export function withErrorBoundary<TProps extends { children?: React.ReactNode; }>(
   WrappedComponent: React.ComponentType<TProps>,
   errorRenderer: (error: Error) => React.ReactNode = renderError
 ): React.ComponentType<TProps> {
