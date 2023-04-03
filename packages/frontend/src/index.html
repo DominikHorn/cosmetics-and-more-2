@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta
-      name="viewport"
-      content="minimum-scale=1, initial-scale=1, width=device-width"
-    />
-    <meta
-        name="theme-color" content="#fff"/>
+<head>
+  <meta charset="UTF-8" />
 
-    <title>Cosmetics and More</title>
+  <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+  <meta name="theme-color" content="#fff" />
 
-    <script type="text/javascript">
-      let pathKey = "path";
-      if (window.sessionStorage[pathKey]) {
-        window.history.pushState(null, null, window.sessionStorage[pathKey]);
-        window.sessionStorage.removeItem(pathKey);
-      }
-    </script>
+  <title>Cosmetics and More</title>
 
-    <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <script type="text/javascript">
+    let pathKey = "path";
+    if (window.sessionStorage[pathKey]) {
+      window.history.pushState(null, null, window.sessionStorage[pathKey]);
+      window.sessionStorage.removeItem(pathKey);
+    }
+  </script>
 
-    <!-- home -->
-    <link rel="preload" href="images/home/entspannung_low.jpg" as="image" />
-    <link rel="preload" href="images/home/kaemmen_low.jpg" as="image" />
-    <link rel="preload" href="images/home/profile_low.jpg" as="image" />
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
 
-    <!-- services -->
-    <link rel="preload" href="images/services/augenbrauen.jpg" as="image" />
-    <link rel="preload" href="images/services/facial_low.jpg" as="image" />
-    <link rel="preload" href="images/services/faerben_low.jpg" as="image" />
-    <link rel="preload" href="images/services/kaemmen_low.jpg" as="image" />
-    <link rel="preload" href="images/services/manicure_low.jpg" as="image" />
-    <link rel="preload" href="images/services/massage_low.jpg" as="image" />
-    <link rel="preload" href="images/services/pedicure_low.jpg" as="image" />
-    <link rel="preload" href="images/services/schneiden_low.jpg" as="image" />
-    <link rel="preload" href="images/services/shave_low.jpg" as="image" />
+  <!-- home -->
+  <link rel="preload" href="images/home/entspannung_low.jpg" as="image" />
+  <link rel="preload" href="images/home/kaemmen_low.jpg" as="image" />
+  <link rel="preload" href="images/home/profile_low.jpg" as="image" />
 
-    <!-- gallery -->
-    <link rel="preload" href="images/gallery/gallery_1.jpg" as="image" />
-    <link rel="preload" href="images/gallery/gallery_2.jpg" as="image" />
-    <link rel="preload" href="images/gallery/gallery_3.jpg" as="image" />
-    <link rel="preload" href="images/gallery/gallery_4.jpg" as="image" />
-    <link rel="preload" href="images/gallery/gallery_5.jpg" as="image" />
-    <link rel="preload" href="images/gallery/gallery_6.jpg" as="image" />
-    <link rel="preload" href="images/gallery/gallery_7.jpg" as="image" />
-    <link rel="preload" href="images/gallery/gallery_8.jpg" as="image" />
+  <!-- services -->
+  <link rel="preload" href="images/services/augenbrauen.jpg" as="image" />
+  <link rel="preload" href="images/services/facial_low.jpg" as="image" />
+  <link rel="preload" href="images/services/faerben_low.jpg" as="image" />
+  <link rel="preload" href="images/services/kaemmen_low.jpg" as="image" />
+  <link rel="preload" href="images/services/manicure_low.jpg" as="image" />
+  <link rel="preload" href="images/services/massage_low.jpg" as="image" />
+  <link rel="preload" href="images/services/pedicure_low.jpg" as="image" />
+  <link rel="preload" href="images/services/schneiden_low.jpg" as="image" />
+  <link rel="preload" href="images/services/shave_low.jpg" as="image" />
 
-    <!-- contact -->
-    <link rel="preload" href="images/contact/profile.png" as="image" />
+  <!-- gallery -->
+  <link rel="preload" href="images/gallery/gallery_1.jpg" as="image" />
+  <link rel="preload" href="images/gallery/gallery_2.jpg" as="image" />
+  <link rel="preload" href="images/gallery/gallery_3.jpg" as="image" />
+  <link rel="preload" href="images/gallery/gallery_4.jpg" as="image" />
+  <link rel="preload" href="images/gallery/gallery_5.jpg" as="image" />
+  <link rel="preload" href="images/gallery/gallery_6.jpg" as="image" />
+  <link rel="preload" href="images/gallery/gallery_7.jpg" as="image" />
+  <link rel="preload" href="images/gallery/gallery_8.jpg" as="image" />
 
-    <!-- define canonical to un-confuse google -->
-    <link rel="canonical" href="https://cosmetics-and-more.de" />
-  </head>
+  <!-- contact -->
+  <link rel="preload" href="images/contact/profile.png" as="image" />
 
-  <body style="margin: 0">
-    <div id="root" />
-    <noscript>Sie benötigen JavaScript um diese Webseite anzusehen</noscript>
+  <!-- define canonical to un-confuse google -->
+  <link rel="canonical" href="https://cosmetics-and-more.de" />
+</head>
 
-    <!-- Required firebase hosting code -->
-    <script src="/__/firebase/8.0.0/firebase-app.js"></script>
-    <script src="/__/firebase/init.js"></script>
-  </body>
+<body style="margin: 0">
+  <div id="root" />
+  <noscript>Sie benötigen JavaScript um diese Webseite anzusehen</noscript>
+
+  <!-- Required firebase hosting code -->
+  <script src="/__/firebase/8.0.0/firebase-app.js"></script>
+  <script src="/__/firebase/init.js"></script>
+</body>
+
 </html>
