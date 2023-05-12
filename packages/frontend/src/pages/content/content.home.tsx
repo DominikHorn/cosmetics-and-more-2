@@ -10,11 +10,11 @@ import {
 } from "@material-ui/core";
 
 const welcomeImage = "images/home/profile_low.png";
-const welcomeImageAlt = "Bild von Katarzyna Thurand";
+const welcomeImageAlt = "Bild von Katrin Thurand";
 const welcomeTitle = "Herzlich Willkommen bei Cosmetics and More";
 const welcomeText = `
     Hallo liebe Besucherin, Hallo lieber Besucher, mein Name ist
-    Katarzyna Thurand und ich freue mich Sie auf der Webseite meines
+    Katrin Thurand und ich freue mich Sie auf der Webseite meines
     Kosmetik- und Frisörstudios begrüßen zu dürfen. Schön, dass Sie da
     sind. Auf diesen Seiten können Sie sich bequem in meinem Studio
     umsehen sowie alle Informationen zu meinem aktuellen

@@ -85,7 +85,7 @@ export const ContactCardComponent = (props: IContactCardComponentProps) => {
             />
           </Grid>
           <Grid item className={classes.centerText}>
-            <Typography variant={"body1"}>Katarzyna Thurand</Typography>
+            <Typography variant={"body1"}>Katrin Thurand</Typography>
             <Typography variant={"body1"}>Cosmetics and More</Typography>
             <Typography variant={"body1"}>Pretzfelder Strasse 15</Typography>
             <Typography variant={"body1"}>81249 München</Typography>
