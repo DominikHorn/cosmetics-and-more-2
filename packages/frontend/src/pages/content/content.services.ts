@@ -2,30 +2,6 @@ import { IService } from "@cosmetics-and-more/components";
 
 export const cosmeticServices: IService[] = [
   {
-    title: "Handpflege",
-    imageURL: "images/services/manicure_low.jpg",
-    variants: [
-      { title: "Maniküre", price: "23" },
-      {
-        title: "Mit Naturlack oder Polieren",
-        price: "26",
-      },
-      {
-        title: "Mit Farblack",
-        price: "29",
-      },
-      {
-        title: "Mit Shellac",
-        price: "45",
-        info: "Hält circa 14 Tage",
-      },
-      {
-        title: "Mit Handmassage",
-        price: "29",
-      },
-    ],
-  },
-  {
     title: "Fußpflege",
     imageURL: "images/services/pedicure_low.jpg",
     variants: [
