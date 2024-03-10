@@ -87,7 +87,7 @@ export const ContactCardComponent = (props: IContactCardComponentProps) => {
           <Grid item className={classes.centerText}>
             <Typography variant={"body1"}>Katrin Thurand</Typography>
             <Typography variant={"body1"}>Cosmetics and More</Typography>
-            <a href="https://maps.app.goo.gl/EQYH1gxPN5AHUmAJA" className={classes.link}>
+            <a href="https://maps.app.goo.gl/EQYH1gxPN5AHUmAJA" target="_blank" className={classes.link}>
               <Typography variant={"body1"}>Pretzfelder Strasse 15</Typography>
               <Typography variant={"body1"}>81249 München</Typography>
             </a>
