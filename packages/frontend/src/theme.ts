@@ -40,10 +40,6 @@ export const baseDarkTheme: ThemeOptions = {
   palette: {
     primary: teal,
     secondary: grey,
-    background: {
-      default: "#101010",
-      paper: "#202020",
-    },
-    type: "dark",
+    type: "light",
   },
 };
