@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import React from "react";
+import { makeStyles } from "@material-ui/core";
 import _uniqueId from "lodash/uniqueId";
 
 const useStyles = makeStyles((theme) => ({
@@ -10,59 +10,19 @@ const useStyles = makeStyles((theme) => ({
       height: "60vh",
     },
   },
+  link: {
+    color: theme.palette.primary.main,
+    textDecoration: "none",
+  },
 }));
 export const MapComponent = () => {
   const classes = useStyles();
-  const mapkit = (window as any).mapkit;
-  const [instanceId] = useState(_uniqueId("mapkitjs-map-"));
 
-  // Configure mapkit & add map after initial render
-  useEffect(() => {
-    const eventListeners: {
-      [key: string]: (event: { status: string }) => void;
-    } = {
-      "configuration-change": (event) => {
-        switch (event.status) {
-          case "Initialized":
-            break;
-          case "Refreshed":
-            break;
-        }
-      },
-      error: (event) => {
-        switch (event.status) {
-          case "Unauthorized":
-            break;
-          case "Too Many Requests":
-            break;
-        }
-      },
-    };
-
-    // Hookup event listeners
-    Object.entries(eventListeners).forEach(([eventName, listener]) =>
-      mapkit.addEventListener(eventName, listener)
-    );
-
-    const poiLocation = new mapkit.Coordinate(48.15424, 11.4152);
-    const marker = new mapkit.MarkerAnnotation(poiLocation, {
-      title: "Cosmetics and More",
-    });
-    new mapkit.Map(instanceId, {
-      region: new mapkit.CoordinateRegion(
-        poiLocation,
-        new mapkit.CoordinateSpan(0.005, 0.005)
-      ),
-      showsPointsOfInterest: true,
-      annotations: [marker],
-    });
-
-    // Cleanup event listener on component unmount
-    return () =>
-      Object.entries(eventListeners).forEach(([eventName, listener]) =>
-        mapkit.removeEventListener(eventName, listener)
-      );
-  }, []);
-
-  return <div id={instanceId} className={classes.map} />;
+  return <div className={classes.map}>
+    <iframe
+      width="100%"
+      height="100%"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=11.40785336494446%2C48.15074098066947%2C11.422637701034548%2C48.15769807643953&amp;layer=mapnik&amp;marker=48.15421964646634%2C11.415245532989502"
+    />
+  </div>;
 };
