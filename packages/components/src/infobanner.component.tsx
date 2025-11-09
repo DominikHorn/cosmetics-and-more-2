@@ -9,7 +9,7 @@ import {
 import { Alert, AlertTitle } from "@material-ui/lab";
 
 export interface IInfoBannerComponentProps {
-  readonly message: string;
+  readonly message: React.ReactNode;
   readonly title?: string;
   readonly severity?: "error" | "info";
 }
@@ -20,9 +20,16 @@ const useStyles = makeStyles({
     boxShadow: "5px 5px 20px gray",
   },
   mobileBar: {
-    marginBottom: "10px",
+    marginTop: "60px",
     boxShadow: "5px 5px 20px gray",
   },
+  alertTitle: {
+    fontWeight: "bold",
+    fontSize: "1.3rem",
+  },
+  alertContent: {
+    fontSize: "1.1rem"
+  }
 });
 
 export const InfoBannerComponent = (props: IInfoBannerComponentProps) => {
@@ -42,14 +49,14 @@ export const InfoBannerComponent = (props: IInfoBannerComponentProps) => {
     <Snackbar
       open={open}
       anchorOrigin={{
-        vertical: isDesktop ? "top" : "bottom",
+        vertical: "top",
         horizontal: "center",
       }}
       className={isDesktop ? classes.desktopBar : classes.mobileBar}
     >
       <Alert severity={props.severity || "error"} onClose={handleClose}>
-        {props.title && <AlertTitle>{props.title}</AlertTitle>}
-        {props.message}
+        {props.title && <AlertTitle className={classes.alertTitle}>{props.title}</AlertTitle>}
+        <div className={classes.alertContent}>{props.message}</div>
       </Alert>
     </Snackbar>
   );

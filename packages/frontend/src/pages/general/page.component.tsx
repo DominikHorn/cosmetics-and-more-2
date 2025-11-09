@@ -82,7 +82,13 @@ export const PageComponent = () => {
           "Ab 01.01.2026 Geschlossen"
         }
         message={
-          "Liebe Kundinnen und Kunden, schweren Herzens habe ich mich dazu entschlossen, Cosmetics and More ab dem 1. Januar 2026 bis auf Weiteres geschlossen zu halten."
+          <>
+            Liebe Kundinnen und Kunden,<br /><br />
+            mein Salon bleibt ab dem 01.01.2026 auf unbestimmte Zeit geschlossen.<br />
+            Diese Entscheidung ist mir nicht leicht gefallen – umso mehr danke ich euch von Herzen für eure Treue, euer Vertrauen und all die schönen gemeinsamen Jahre.<br /><br />
+            Sobald es Neuigkeiten gibt, werde ich euch natürlich über Whatsapp und die Webseite informieren.<br />
+            Danke für euer Verständnis.
+          </>
         }
       />
     </ThemeProvider>
