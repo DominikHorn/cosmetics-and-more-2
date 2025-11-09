@@ -76,6 +76,15 @@ export const PageComponent = () => {
       ) : (
         <MobilePage {...navBarProps} />
       )}
+
+      <InfoBannerComponent
+        title={
+          "Ab 01.01.2026 Geschlossen"
+        }
+        message={
+          "Liebe Kundinnen und Kunden, schweren Herzens habe ich mich dazu entschlossen, Cosmetics and More ab dem 1. Januar 2026 bis auf Weiteres geschlossen zu halten."
+        }
+      />
     </ThemeProvider>
   );
 };
