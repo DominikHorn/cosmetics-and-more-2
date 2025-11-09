@@ -77,7 +77,7 @@ export const PageComponent = () => {
         <MobilePage {...navBarProps} />
       )}
 
-      {/* <InfoBannerComponent
+      <InfoBannerComponent
         title={
           "Ab 01.01.2026 Geschlossen"
         }
@@ -90,7 +90,7 @@ export const PageComponent = () => {
             Danke für euer Verständnis.
           </>
         }
-      /> */}
+      />
     </ThemeProvider>
   );
 };
